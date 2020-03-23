@@ -1,0 +1,65 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+form {
+  color: rgb(46, 136, 88);
+  font-weight: bold;
+  border-radius: 10px;
+  font-size: 1.2rem;
+}
+
+form fieldset {
+  border: 2px rgb(46, 136, 88) solid;
+  border-radius: 15px;
+}
+
+legend {
+  padding: 0 5px;
+  font-size: 1rem;
+}
+
+fieldset div {
+  display: flex;
+  justify-content: flex-end;
+  align-items: space-between;
+}
+fieldset div {
+  margin: 2px 0;
+}
+
+fieldset label {
+  margin-right: 10px;
+}
+
+fieldset input {
+  width: 180px;
+  background: linear-gradient(to right, rgb(46, 136, 88), rgb(12, 190, 154));
+  border: none;
+  color: white;
+  border-radius: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(46, 136, 88);
+}
+
+form div {
+  margin-left: 30px;
+}
+
+.btn {
+  margin-top: 10px;
+  margin-right: 10px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  background: rgb(46, 136, 88);
+  cursor: pointer;
+}
