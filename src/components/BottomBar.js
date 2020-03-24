@@ -12,7 +12,7 @@ const BottomBar = () => (
     }}
   >
     <div style={{ float: "right" }}>
-      <Link to="/">
+      <Link to="/login">
         <button className="btn">login</button>
       </Link>
     </div>

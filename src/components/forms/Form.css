@@ -10,6 +10,7 @@ form {
   font-weight: bold;
   border-radius: 10px;
   font-size: 1.2rem;
+  margin: 0 20px;
 }
 
 form fieldset {

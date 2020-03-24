@@ -1,15 +1,19 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { globalContext } from "../context/globalContext"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
+const IndexPage = () => {
+  const context = useContext(globalContext)
+  const { user } = context.state
+  return (
+    <Layout>
+      <SEO title="Home" />
 
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}></div>
-    <Link to="/weekView/">Go to register</Link>
-  </Layout>
-)
+      <Link to="/weekView/">Go to register</Link>
+    </Layout>
+  )
+}
 
 export default IndexPage

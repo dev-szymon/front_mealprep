@@ -1,10 +1,11 @@
-import React from "react"
-import "./RegisterForm.css"
+import React, { useContext } from "react"
+import "./Form.css"
 import gql from "graphql-tag"
 import { useMutation } from "@apollo/react-hooks"
+import { globalContext } from "../../context/globalContext"
 
 const NEW_USER = gql`
-  mutation RegisterForm($name: String!, $email: String!, $password: String!) {
+  mutation RegisterUser($name: String!, $email: String!, $password: String!) {
     newUser(name: $name, email: $email, password: $password) {
       id
       name
@@ -13,25 +14,26 @@ const NEW_USER = gql`
 `
 
 const RegisterForm = () => {
-  let name
-  let email
-  let password
+  const context = useContext(globalContext)
+  let name = ""
+  let email = ""
+  let password = ""
 
-  const [newUser, { data }] = useMutation(NEW_USER)
+  const [newUser] = useMutation(NEW_USER, {
+    update(_, { data }) {
+      context.login(data.user.id)
+    },
+  })
   return (
     <>
       <form
-        style={{ margin: "70px 20px" }}
         onSubmit={async e => {
           e.preventDefault()
-          name = ""
-          email = ""
-          password = ""
           await newUser({
             variables: {
-              name: name,
-              email: email,
-              password: password,
+              name: name.value,
+              email: email.value,
+              password: password.value,
             },
           })
         }}
@@ -46,7 +48,6 @@ const RegisterForm = () => {
               }}
               type="name"
               name="name"
-              id="name"
             />
           </div>
           <div>
@@ -57,7 +58,6 @@ const RegisterForm = () => {
               }}
               type="email"
               name="email-address"
-              id="email-address"
             />
           </div>
 
@@ -69,7 +69,6 @@ const RegisterForm = () => {
               }}
               type="password"
               name="password"
-              id="password"
             />
           </div>
         </fieldset>
