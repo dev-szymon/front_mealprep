@@ -3,7 +3,9 @@ import "./Form.css"
 import gql from "graphql-tag"
 import { useMutation } from "@apollo/react-hooks"
 import { globalContext } from "../../context/globalContext"
+import { pageContext, PageContextProvider } from "../../context/pageContext"
 
+// need to query more to popuate state
 const NEW_USER = gql`
   mutation RegisterUser($name: String!, $email: String!, $password: String!) {
     newUser(name: $name, email: $email, password: $password) {
@@ -15,6 +17,7 @@ const NEW_USER = gql`
 
 const RegisterForm = () => {
   const context = useContext(globalContext)
+  const pContext = useContext(pageContext)
   let name = ""
   let email = ""
   let password = ""
@@ -26,56 +29,67 @@ const RegisterForm = () => {
   })
   return (
     <>
-      <form
-        onSubmit={async e => {
-          e.preventDefault()
-          await newUser({
-            variables: {
-              name: name.value,
-              email: email.value,
-              password: password.value,
-            },
-          })
-        }}
-      >
-        <fieldset id="sign_up">
-          <legend>Create your new personalised account!</legend>
-          <div>
-            <label htmlFor="name">Name</label>
-            <input
-              ref={node => {
-                name = node
-              }}
-              type="name"
-              name="name"
-            />
-          </div>
-          <div>
-            <label htmlFor="email-address">Email</label>
-            <input
-              ref={node => {
-                email = node
-              }}
-              type="email"
-              name="email-address"
-            />
-          </div>
+      <PageContextProvider>
+        <form
+          onSubmit={async e => {
+            e.preventDefault()
+            await newUser({
+              variables: {
+                name: name.value,
+                email: email.value,
+                password: password.value,
+              },
+            })
+          }}
+        >
+          <fieldset id="sign_up">
+            <legend>Create your new personalised account!</legend>
+            <div>
+              <label htmlFor="name">Name</label>
+              <input
+                ref={node => {
+                  name = node
+                }}
+                type="name"
+                name="name"
+              />
+            </div>
+            <div>
+              <label htmlFor="email-address">Email</label>
+              <input
+                ref={node => {
+                  email = node
+                }}
+                type="email"
+                name="email-address"
+              />
+            </div>
 
+            <div>
+              <label htmlFor="password">Password</label>
+              <input
+                ref={node => {
+                  password = node
+                }}
+                type="password"
+                name="password"
+              />
+            </div>
+          </fieldset>
           <div>
-            <label htmlFor="password">Password</label>
-            <input
-              ref={node => {
-                password = node
-              }}
-              type="password"
-              name="password"
-            />
+            <input className="btn" type="submit" value="Register" />
           </div>
-        </fieldset>
-        <div>
-          <input className="btn" type="submit" value="Register..." />
-        </div>
-      </form>
+        </form>
+        <button
+          onClick={() => {
+            pContext.goToLogin()
+            console.log(pContext)
+          }}
+          className="btn"
+        >
+          Login
+        </button>
+      </PageContextProvider>
     </>
   )
 }

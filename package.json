@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "mealprep",
   "private": true,
   "description": "A simple starter to get up and developing quickly with Gatsby",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Szymon Gazda",
   "dependencies": {
     "@apollo/react-hooks": "^3.1.3",
     "apollo-boost": "^0.4.7",
@@ -27,7 +27,7 @@
     "prettier": "^1.19.1"
   },
   "keywords": [
-    "gatsby"
+    "mealprep"
   ],
   "license": "MIT",
   "scripts": {

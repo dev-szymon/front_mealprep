@@ -1,17 +1,28 @@
 import React, { useContext } from "react"
-import { Link } from "gatsby"
-import Layout from "../components/layout"
+import Layout from "../components/layout/layout"
 import SEO from "../components/seo"
 import { globalContext } from "../context/globalContext"
+import LoginForm from "../components/forms/LoginForm"
 
 const IndexPage = () => {
   const context = useContext(globalContext)
   const { user } = context.state
+  console.log(user)
+
   return (
     <Layout>
       <SEO title="Home" />
-
-      <Link to="/weekView/">Go to register</Link>
+      {user === null ? (
+        <div className="container">
+          <LoginForm />
+        </div>
+      ) : (
+        <>
+          <h1 style={{ position: "absolute", top: "170px" }}>
+            Hello {user.name}
+          </h1>
+        </>
+      )}
     </Layout>
   )
 }

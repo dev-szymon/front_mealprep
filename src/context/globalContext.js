@@ -1,7 +1,7 @@
 import React, { createContext, useReducer } from "react"
 
-export const globalContext = createContext()
 const initialState = { user: null, login: userData => {}, logout: () => {} }
+export const globalContext = createContext(initialState)
 
 const reducer = (state, action) => {
   switch (action.type) {

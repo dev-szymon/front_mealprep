@@ -3,6 +3,7 @@ import "./Form.css"
 import gql from "graphql-tag"
 import { useMutation } from "@apollo/react-hooks"
 import { globalContext } from "../../context/globalContext"
+import { PageContextProvider } from "../../context/pageContext"
 
 const LOGIN_USER = gql`
   mutation LoginUser($email: String!, $password: String!) {
@@ -21,6 +22,13 @@ const LOGIN_USER = gql`
         id
         name
       }
+      mealPlan {
+        mon {
+          recipe {
+            name
+          }
+        }
+      }
     }
   }
 `
@@ -36,47 +44,49 @@ const LoginForm = () => {
     },
   })
   return (
-    <>
-      <form
-        onSubmit={async e => {
-          e.preventDefault()
-          await logIn({
-            variables: {
-              email: email.value,
-              password: password.value,
-            },
-          })
-        }}
-      >
-        <fieldset id="sign_up">
-          <legend>Provide your email and password!</legend>
-          <div>
-            <label htmlFor="email-address">Email</label>
-            <input
-              ref={node => {
-                email = node
-              }}
-              type="email"
-              name="email-address"
-            />
-          </div>
+    <PageContextProvider>
+      <>
+        <form
+          onSubmit={async e => {
+            e.preventDefault()
+            await logIn({
+              variables: {
+                email: email.value,
+                password: password.value,
+              },
+            })
+          }}
+        >
+          <fieldset id="sign_up">
+            <legend>Provide your email and password!</legend>
+            <div>
+              <label htmlFor="email-address">Email</label>
+              <input
+                ref={node => {
+                  email = node
+                }}
+                type="email"
+                name="email-address"
+              />
+            </div>
 
+            <div>
+              <label htmlFor="password">Password</label>
+              <input
+                ref={node => {
+                  password = node
+                }}
+                type="password"
+                name="password"
+              />
+            </div>
+          </fieldset>
           <div>
-            <label htmlFor="password">Password</label>
-            <input
-              ref={node => {
-                password = node
-              }}
-              type="password"
-              name="password"
-            />
+            <input className="btn" type="submit" value="Login" />
           </div>
-        </fieldset>
-        <div>
-          <input className="btn" type="submit" value="Login" />
-        </div>
-      </form>
-    </>
+        </form>
+      </>
+    </PageContextProvider>
   )
 }
 
