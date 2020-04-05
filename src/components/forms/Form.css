@@ -1,8 +1,9 @@
 .container {
-  height: 100vh;
+  padding-top: 100px;
+  height: 60vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 form {

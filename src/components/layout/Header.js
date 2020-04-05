@@ -8,8 +8,11 @@ const Header = ({ siteTitle }) => (
       position: "fixed",
       top: 0,
       width: "100%",
-      height: "70px",
+      height: "50px",
       background: `linear-gradient(to right, rgb(46, 136, 88), rgb(12, 190, 154))`,
+      display: "flex",
+      alignItems: "flex-end",
+      zIndex: "1",
     }}
   >
     <h1

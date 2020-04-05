@@ -3,7 +3,6 @@ import "./Form.css"
 import gql from "graphql-tag"
 import { useMutation } from "@apollo/react-hooks"
 import { globalContext } from "../../context/globalContext"
-import { PageContextProvider } from "../../context/pageContext"
 
 const LOGIN_USER = gql`
   mutation LoginUser($email: String!, $password: String!) {
@@ -13,6 +12,40 @@ const LOGIN_USER = gql`
       recipesCreated {
         id
         name
+        ingredients {
+          id
+          name
+        }
+        createdBy {
+          name
+        }
+        description
+        prepTime
+        cookBooked {
+          name
+        }
+        likes {
+          name
+        }
+      }
+      recipesSaved {
+        id
+        name
+        ingredients {
+          id
+          name
+        }
+        createdBy {
+          name
+        }
+        description
+        prepTime
+        cookBooked {
+          name
+        }
+        likes {
+          name
+        }
       }
       followers {
         id
@@ -24,9 +57,95 @@ const LOGIN_USER = gql`
       }
       mealPlan {
         mon {
+          id
+          day
           recipe {
+            id
             name
+            ingredients {
+              name
+              kcal
+            }
           }
+          label
+        }
+        tue {
+          id
+          day
+          recipe {
+            id
+            name
+            ingredients {
+              name
+              kcal
+            }
+          }
+          label
+        }
+        wed {
+          id
+          day
+          recipe {
+            id
+            name
+            ingredients {
+              name
+              kcal
+            }
+          }
+          label
+        }
+        thu {
+          id
+          day
+          recipe {
+            id
+            name
+            ingredients {
+              name
+              kcal
+            }
+          }
+          label
+        }
+        fri {
+          id
+          day
+          recipe {
+            id
+            name
+            ingredients {
+              name
+              kcal
+            }
+          }
+          label
+        }
+        sat {
+          id
+          day
+          recipe {
+            id
+            name
+            ingredients {
+              name
+              kcal
+            }
+          }
+          label
+        }
+        sun {
+          id
+          day
+          recipe {
+            id
+            name
+            ingredients {
+              name
+              kcal
+            }
+          }
+          label
         }
       }
     }
@@ -44,49 +163,47 @@ const LoginForm = () => {
     },
   })
   return (
-    <PageContextProvider>
-      <>
-        <form
-          onSubmit={async e => {
-            e.preventDefault()
-            await logIn({
-              variables: {
-                email: email.value,
-                password: password.value,
-              },
-            })
-          }}
-        >
-          <fieldset id="sign_up">
-            <legend>Provide your email and password!</legend>
-            <div>
-              <label htmlFor="email-address">Email</label>
-              <input
-                ref={node => {
-                  email = node
-                }}
-                type="email"
-                name="email-address"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="password">Password</label>
-              <input
-                ref={node => {
-                  password = node
-                }}
-                type="password"
-                name="password"
-              />
-            </div>
-          </fieldset>
+    <>
+      <form
+        onSubmit={async e => {
+          e.preventDefault()
+          await logIn({
+            variables: {
+              email: email.value,
+              password: password.value,
+            },
+          })
+        }}
+      >
+        <fieldset id="sign_up">
+          <legend>Provide your email and password!</legend>
           <div>
-            <input className="btn" type="submit" value="Login" />
+            <label htmlFor="email-address">Email</label>
+            <input
+              ref={node => {
+                email = node
+              }}
+              type="email"
+              name="email-address"
+            />
           </div>
-        </form>
-      </>
-    </PageContextProvider>
+
+          <div>
+            <label htmlFor="password">Password</label>
+            <input
+              ref={node => {
+                password = node
+              }}
+              type="password"
+              name="password"
+            />
+          </div>
+        </fieldset>
+        <div>
+          <input className="btn" type="submit" value="Login" />
+        </div>
+      </form>
+    </>
   )
 }
 
