@@ -7,10 +7,10 @@ import CurrentDay from "../../components/homeview/CurrentDay"
 const Homeview = () => {
   const context = useContext(globalContext)
   const { user } = context.state
-  const { mon } = user.mealPlan
+  const { mealPlan } = user
 
   const addMealButton = () => {
-    if (mon.length < 6) {
+    if (mealPlan.days[0].meals < 6) {
       return <button type="button">addMeal</button>
     }
   }
@@ -18,13 +18,12 @@ const Homeview = () => {
   return (
     <section style={{ padding: "0 20px" }}>
       <Nav>
-        <CurrentDay meals={mon} />
+        <CurrentDay mealPlan={mealPlan} />
       </Nav>
       <div>
-        {mon.map(m => (
-          <Meal key={m.id} data={m} />
-        ))}
-        {addMealButton()}
+        {mealPlan.days[0].meals.length === 0
+          ? addMealButton()
+          : mealPlan.days[0].meals.map(m => <Meal key={m.id} data={m} />)}
       </div>
     </section>
   )

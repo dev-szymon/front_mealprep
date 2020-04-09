@@ -1,8 +1,7 @@
 import React from "react"
-import Recipe from "../../components/Recipe"
+import Recipe from "./Recipe"
 
 const Recipes = ({ recipeGroup }) => {
-  console.log(recipeGroup)
   return (
     <div>
       {recipeGroup.length === 0

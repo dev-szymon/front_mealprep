@@ -1,5 +1,5 @@
 import React from "react"
-import { IngredientsUsed } from "../functions/index"
+import { IngredientsUsed } from "../../functions/index"
 
 const Recipe = ({ data }) => {
   const {

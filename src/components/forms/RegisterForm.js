@@ -6,23 +6,27 @@ import { globalContext } from "../../context/globalContext"
 
 // need to query more to popuate state
 const NEW_USER = gql`
-  mutation RegisterUser($name: String!, $email: String!, $password: String!) {
-    newUser(name: $name, email: $email, password: $password) {
+  mutation RegisterUser(
+    $username: String!
+    $email: String!
+    $password: String!
+  ) {
+    newUser(username: $username, email: $email, password: $password) {
       id
-      name
+      username
     }
   }
 `
 
 const RegisterForm = () => {
   const context = useContext(globalContext)
-  let name = ""
+  let username = ""
   let email = ""
   let password = ""
 
   const [newUser] = useMutation(NEW_USER, {
     update(_, { data }) {
-      context.login(data.user.id)
+      context.login(data.id)
     },
   })
   return (
@@ -32,7 +36,7 @@ const RegisterForm = () => {
           e.preventDefault()
           await newUser({
             variables: {
-              name: name.value,
+              username: username.value,
               email: email.value,
               password: password.value,
             },
@@ -42,13 +46,13 @@ const RegisterForm = () => {
         <fieldset id="sign_up">
           <legend>Create your new personalised account!</legend>
           <div>
-            <label htmlFor="name">Name</label>
+            <label htmlFor="username">Username</label>
             <input
               ref={node => {
-                name = node
+                username = node
               }}
               type="name"
-              name="name"
+              username="username"
             />
           </div>
           <div>

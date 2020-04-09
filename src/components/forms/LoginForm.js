@@ -8,144 +8,22 @@ const LOGIN_USER = gql`
   mutation LoginUser($email: String!, $password: String!) {
     logIn(email: $email, password: $password) {
       id
-      name
-      recipesCreated {
-        id
-        name
-        ingredients {
-          id
-          name
-        }
-        createdBy {
-          name
-        }
-        description
-        prepTime
-        cookBooked {
-          name
-        }
-        likes {
-          name
-        }
-      }
-      recipesSaved {
-        id
-        name
-        ingredients {
-          id
-          name
-        }
-        createdBy {
-          name
-        }
-        description
-        prepTime
-        cookBooked {
-          name
-        }
-        likes {
-          name
-        }
-      }
-      followers {
-        id
-        name
-      }
-      following {
-        id
-        name
-      }
+      username
       mealPlan {
-        mon {
+        days {
           id
-          day
-          recipe {
-            id
-            name
-            ingredients {
+          meals {
+            recipe {
+              id
               name
-              kcal
+              ingredients {
+                name
+                kcal
+              }
             }
+            label
           }
-          label
-        }
-        tue {
-          id
-          day
-          recipe {
-            id
-            name
-            ingredients {
-              name
-              kcal
-            }
-          }
-          label
-        }
-        wed {
-          id
-          day
-          recipe {
-            id
-            name
-            ingredients {
-              name
-              kcal
-            }
-          }
-          label
-        }
-        thu {
-          id
-          day
-          recipe {
-            id
-            name
-            ingredients {
-              name
-              kcal
-            }
-          }
-          label
-        }
-        fri {
-          id
-          day
-          recipe {
-            id
-            name
-            ingredients {
-              name
-              kcal
-            }
-          }
-          label
-        }
-        sat {
-          id
-          day
-          recipe {
-            id
-            name
-            ingredients {
-              name
-              kcal
-            }
-          }
-          label
-        }
-        sun {
-          id
-          day
-          recipe {
-            id
-            name
-            ingredients {
-              name
-              kcal
-            }
-          }
-          label
+          date
         }
       }
     }

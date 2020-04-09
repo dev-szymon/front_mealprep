@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import Nav from "../layout/Nav"
 import Recipes from "../Cookbook/Recipes"
 
-const Cookbook = ({ recipesCreated, recipesSaved }) => {
+const CookbookView = ({ recipesCreated, recipesSaved }) => {
   const [myRecipes, setMyRecipes] = useState(true)
   return (
     <div>
@@ -29,6 +29,9 @@ const Cookbook = ({ recipesCreated, recipesSaved }) => {
           <>
             <h1>Saved recipes</h1>
             <Recipes recipeGroup={recipesSaved} />
+            <button type="button" className="btn">
+              new recipe
+            </button>
           </>
         )}
       </section>
@@ -36,4 +39,4 @@ const Cookbook = ({ recipesCreated, recipesSaved }) => {
   )
 }
 
-export default Cookbook
+export default CookbookView

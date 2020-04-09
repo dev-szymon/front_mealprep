@@ -10,7 +10,7 @@ const Nav = ({ children }) => {
         <ul>
           <li>Feed</li>
           <li>Week</li>
-          <Link to="/cookbookview">
+          <Link to="/cookbook">
             <li>Cookbook</li>
           </Link>
           <li>Cart</li>
