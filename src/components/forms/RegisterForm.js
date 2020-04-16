@@ -4,7 +4,6 @@ import gql from "graphql-tag"
 import { useMutation } from "@apollo/react-hooks"
 import { globalContext } from "../../context/globalContext"
 
-// need to query more to popuate state
 const NEW_USER = gql`
   mutation RegisterUser(
     $username: String!
@@ -26,9 +25,10 @@ const RegisterForm = () => {
 
   const [newUser] = useMutation(NEW_USER, {
     update(_, { data }) {
-      context.login(data.id)
+      context.login(data.newUser)
     },
   })
+
   return (
     <>
       <form

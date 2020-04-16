@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/react-hooks"
 import gql from "graphql-tag"
 import { globalContext } from "../../context/globalContext"
 import CookbookView from "./CookbookView"
+import Loading from "../Loading"
 
 const RECIPE_BOOKS_QUERY = gql`
   query getLoggedIn($id: ID!) {
@@ -22,9 +23,12 @@ const RECIPE_BOOKS_QUERY = gql`
           id
           kcal
           name
-          protein
         }
         likes {
+          id
+          username
+        }
+        cookBooked {
           id
           username
         }
@@ -46,10 +50,13 @@ const RECIPE_BOOKS_QUERY = gql`
           id
           kcal
           name
-          protein
         }
         name
         prepTime
+        cookBooked {
+          id
+          username
+        }
       }
     }
   }
@@ -61,7 +68,7 @@ const CookbookContainer = () => {
     variables: { id: id },
   })
 
-  if (loading) return null
+  if (loading) return <Loading />
   return (
     <div
       style={{

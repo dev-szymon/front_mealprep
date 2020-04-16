@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import Layout from "../components/layout/layout"
 import SEO from "../components/seo"
 import { globalContext } from "../context/globalContext"
@@ -9,6 +9,7 @@ const IndexPage = () => {
   const context = useContext(globalContext)
   const { user } = context.state
   console.log(user)
+  useEffect(() => console.log(user), [user])
 
   return (
     <Layout>
@@ -16,17 +17,15 @@ const IndexPage = () => {
       {user === null ? (
         <WelcomePage />
       ) : (
-        <>
-          <div
-            style={{
-              position: "relative",
-              top: "120px",
-              paddingBottom: "60px",
-            }}
-          >
-            <Homeview />
-          </div>
-        </>
+        <div
+          style={{
+            position: "relative",
+            top: "120px",
+            paddingBottom: "60px",
+          }}
+        >
+          <Homeview />
+        </div>
       )}
     </Layout>
   )

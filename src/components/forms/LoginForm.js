@@ -9,23 +9,6 @@ const LOGIN_USER = gql`
     logIn(email: $email, password: $password) {
       id
       username
-      mealPlan {
-        days {
-          id
-          meals {
-            recipe {
-              id
-              name
-              ingredients {
-                name
-                kcal
-              }
-            }
-            label
-          }
-          date
-        }
-      }
     }
   }
 `

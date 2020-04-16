@@ -19,7 +19,7 @@ const Recipe = ({ data }) => {
       <div>ingredients: {<IngredientsUsed ingredients={ingredients} />}</div>
       <p>{description}</p>
       <h5>preparation time: {prepTime}min</h5>
-      <h4>author: {createdBy.name}</h4>
+      <h4>author: {createdBy.username}</h4>
       <h4>likes: {likes.length}</h4>
       <h4>cookbooked: {cookBooked.length}</h4>
     </div>
