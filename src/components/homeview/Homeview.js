@@ -34,7 +34,7 @@ const MEALPLAN_QUERY = gql`
     }
   }
 `
-
+const check = "pull check"
 const Homeview = () => {
   const context = useContext(globalContext)
 
