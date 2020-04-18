@@ -34,7 +34,6 @@ const MEALPLAN_QUERY = gql`
     }
   }
 `
-const check = "pull check"
 const Homeview = () => {
   const context = useContext(globalContext)
 
@@ -67,25 +66,30 @@ const Homeview = () => {
       <div>
         {day.meals.length < 6 ? (
           <RecipeSearchInputBar
-            currentDay={"5e9608c210ec3d261cd71ce1"}
+            currentDay={
+              data.getUser.mealPlan.days.filter(d => findCurrentDay(d))[0]
+            }
             mplan={data.getUser.mealPlan.id}
             refetch={refetch}
           />
         ) : null}
         {day.meals.map((m, i) => (
-          <Meal key={i} data={m} />
+          <Meal key={i} data={m} refetch={refetch} />
         ))}
       </div>
     )
   }
 
-  // compares today's day of the week with all the days of current week and returns displayMeals function
+  // returns current day  object
   const findCurrentDay = day => {
     const currentDay = new Date()
     const passedDay = new Date(day.date)
-    const isCurrent =
-      currentDay.getDay() === passedDay.getDay() ? displayMeals(day) : null
-    return isCurrent
+    const isCurrent = () => {
+      if (currentDay.getDay() === passedDay.getDay()) {
+        return day
+      }
+    }
+    return isCurrent()
   }
 
   // !!! Clicking on nav elements triggers onclick handler from header, they are too close to each other
@@ -96,9 +100,17 @@ const Homeview = () => {
       ) : (
         <div className="container">
           <Nav>
-            <CurrentDay mealPlan={data.getUser.mealPlan} />
+            <CurrentDay
+              currentDayData={
+                data.getUser.mealPlan.days.filter(d => findCurrentDay(d))[0]
+              }
+            />
           </Nav>
-          <div>{data.getUser.mealPlan.days.map(d => findCurrentDay(d))}</div>
+          <div>
+            {displayMeals(
+              data.getUser.mealPlan.days.filter(d => findCurrentDay(d))[0]
+            )}
+          </div>
         </div>
       )}
     </section>

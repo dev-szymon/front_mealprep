@@ -1,6 +1,6 @@
 import React from "react"
 
-const CurrentDay = ({ mealPlan }) => {
+const CurrentDay = ({ currentDayData }) => {
   const currentDay = () => {
     const date = new Date()
     const day = date.getDay()
@@ -24,7 +24,7 @@ const CurrentDay = ({ mealPlan }) => {
     }
   }
   const sumDailyKcal = () => {
-    const { meals } = mealPlan.days[5]
+    const { meals } = currentDayData
     let kcalArray = []
     meals.map(d => d.recipe.ingredients.map(i => kcalArray.push(i.kcal)))
     const totalKcal = kcalArray.reduce((a, b) => {

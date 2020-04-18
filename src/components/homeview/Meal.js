@@ -1,7 +1,20 @@
 import React from "react"
 import { IngredientsUsed } from "../../functions/index"
+import gql from "graphql-tag"
+import { useMutation } from "@apollo/react-hooks"
 
-const Meal = ({ data }) => {
+const REMOVE_MEAL = gql`
+  mutation NewMeal($meal: ID!) {
+    removeMeal(meal: $meal) {
+      id
+      recipe {
+        name
+      }
+    }
+  }
+`
+
+const Meal = ({ data, refetch }) => {
   const { ingredients, name } = data.recipe
   const sumIngredientsKcal = () => {
     let kcalArray = []
@@ -11,6 +24,8 @@ const Meal = ({ data }) => {
     }, 0)
     return totalKcal
   }
+
+  const [removeMeal] = useMutation(REMOVE_MEAL)
 
   return (
     <div>
@@ -24,7 +39,19 @@ const Meal = ({ data }) => {
           <IngredientsUsed ingredients={ingredients} />
         </div>
       </div>
-      <button type="button">remove</button>
+      <button
+        type="button"
+        onClick={() => {
+          removeMeal({
+            variables: {
+              meal: data.id,
+            },
+          })
+          refetch()
+        }}
+      >
+        remove
+      </button>
     </div>
   )
 }

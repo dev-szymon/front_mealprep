@@ -89,7 +89,7 @@ const RecipeSearchInputBar = props => {
                     onClick={() => {
                       addMeal({
                         variables: {
-                          day: props.currentDay,
+                          day: props.currentDay.id,
                           recipe: r.id,
                           label: "brf",
                         },
