@@ -17,6 +17,7 @@ const MEALPLAN_QUERY = gql`
         days {
           id
           meals {
+            id
             recipe {
               id
               name
@@ -38,15 +39,39 @@ const Homeview = () => {
   const context = useContext(globalContext)
 
   const { id } = context.state.user
-  const { loading, data } = useQuery(MEALPLAN_QUERY, {
+  const { loading, data, refetch } = useQuery(MEALPLAN_QUERY, {
     variables: { id: id },
   })
 
+  // code below doesn't work, need to update context somehow but tried everything and it returns undefined
+
+  // useEffect(() => {
+  //   const onCompleted = data => {
+  //     mealContext.fillMealplan(data.getUser)
+  //   }
+  //   const onError = error => {
+  //     console.log(error)
+  //   }
+  //   if (onCompleted || onError) {
+  //     if (onCompleted && !loading && !error) {
+  //       onCompleted(data)
+  //     } else if (onError && !loading && error) {
+  //       onError(error)
+  //     }
+  //   }
+  // }, [loading, data, error])
+
   // returns meals from the passed day and a button if they are < than 6
-  const displayMeals = (day, index) => {
+  const displayMeals = day => {
     return (
-      <div key={index}>
-        {day.meals.length < 6 ? <RecipeSearchInputBar /> : null}
+      <div>
+        {day.meals.length < 6 ? (
+          <RecipeSearchInputBar
+            currentDay={"5e9608c210ec3d261cd71ce1"}
+            mplan={data.getUser.mealPlan.id}
+            refetch={refetch}
+          />
+        ) : null}
         {day.meals.map((m, i) => (
           <Meal key={i} data={m} />
         ))}

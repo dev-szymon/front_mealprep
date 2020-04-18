@@ -20,7 +20,10 @@ const CookbookView = ({ recipesCreated, recipesSaved }) => {
         {myRecipes ? (
           <>
             <h1>Created recipes</h1>
-            <Recipes recipeGroup={recipesCreated} />
+            <Recipes
+              recipeGroup={recipesCreated}
+              actionText={"Make a new recipe!"}
+            />
             <button type="button" className="btn">
               new recipe
             </button>
@@ -28,7 +31,10 @@ const CookbookView = ({ recipesCreated, recipesSaved }) => {
         ) : (
           <>
             <h1>Saved recipes</h1>
-            <Recipes recipeGroup={recipesSaved} />
+            <Recipes
+              recipeGroup={recipesSaved}
+              actionText={"Make a new recipe or browse other people recipes!"}
+            />
             <button type="button" className="btn">
               new recipe
             </button>

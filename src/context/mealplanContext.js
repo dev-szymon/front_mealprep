@@ -1,19 +1,12 @@
 import React, { createContext, useReducer } from "react"
 
-const initialMealplan = { mealplan: null }
-export const mealplanContext = createContext(initialMealplan)
+export const mealplanContext = createContext({})
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "LOGIN":
+    case "mealplanQuery":
       return {
-        ...state,
-        user: action.payload,
-      }
-    case "LOGOUT":
-      return {
-        ...state,
-        user: null,
+        state: action.payload,
       }
     default:
       return state
@@ -21,19 +14,15 @@ const reducer = (state, action) => {
 }
 
 export const MealplanContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const [state, dispatch] = useReducer(reducer, {})
 
-  const login = async userData => {
-    await dispatch({ type: "LOGIN", payload: userData })
+  const fillMealplan = async data => {
+    await dispatch({ type: "mealplanQuery", payload: data })
   }
-  const logout = () =>
-    dispatch({
-      type: "LOGOUT",
-    })
 
   return (
-    <globalContext.Provider value={{ state, dispatch, login, logout }}>
+    <mealplanContext.Provider value={{ state, dispatch, fillMealplan }}>
       {children}
-    </globalContext.Provider>
+    </mealplanContext.Provider>
   )
 }

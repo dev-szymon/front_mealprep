@@ -28,8 +28,8 @@ const MEALS_QUERY = gql`
 `
 
 const ADD_MEAL = gql`
-  mutation NewMeal($week: ID!, $day: ID!, $label: String!) {
-    addMeal(week: $week, day: $day, label: $label) {
+  mutation NewMeal($day: ID!, $recipe: ID!, $label: String!) {
+    addMeal(day: $day, recipe: $recipe, label: $label) {
       id
       recipe {
         name
@@ -38,13 +38,15 @@ const ADD_MEAL = gql`
   }
 `
 
-const RecipeSearchInputBar = () => {
+const RecipeSearchInputBar = props => {
   const context = useContext(globalContext)
   const { id } = context.state.user
   const { loading, data } = useQuery(MEALS_QUERY, {
     variables: { id: id },
   })
   const [filtered, setFiltered] = useState([])
+
+  const [addMeal] = useMutation(ADD_MEAL)
 
   return (
     <Formik
@@ -54,14 +56,25 @@ const RecipeSearchInputBar = () => {
     >
       <Form
         onChange={e => {
-          const matched = data.getUser.recipesCreated.filter(r =>
+          const { recipesCreated, recipesSaved } = data.getUser
+
+          const matchedRecipesCreated = recipesCreated.filter(r =>
             r.name.toLowerCase().includes(e.target.value.toLowerCase())
           )
-          setFiltered([...matched])
-          console.log(filtered)
+
+          const matchedRecipesSaved = recipesSaved.filter(r =>
+            r.name.toLowerCase().includes(e.target.value.toLowerCase())
+          )
+
+          const matches = [...matchedRecipesCreated, ...matchedRecipesSaved]
+          setFiltered(
+            matches
+              .flat()
+              .filter((item, index) => matches.indexOf(item) === index)
+          )
         }}
       >
-        <FormTextField name="search" type="search" />
+        <FormTextField name="search" type="search" autoComplete="off" />
 
         {loading ? (
           <Loading />
@@ -71,7 +84,21 @@ const RecipeSearchInputBar = () => {
               return (
                 <li key={i}>
                   {r.name}
-                  <button type="submit">Add +</button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      addMeal({
+                        variables: {
+                          day: props.currentDay,
+                          recipe: r.id,
+                          label: "brf",
+                        },
+                      })
+                      props.refetch()
+                    }}
+                  >
+                    Add +
+                  </button>
                 </li>
               )
             })}

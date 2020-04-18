@@ -1,15 +1,14 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext } from "react"
 import Layout from "../components/layout/layout"
 import SEO from "../components/seo"
 import { globalContext } from "../context/globalContext"
+import { MealplanContextProvider } from "../context/mealplanContext"
 import WelcomePage from "../components/forms/WelcomePage"
 import Homeview from "../components/homeview/Homeview"
 
 const IndexPage = () => {
   const context = useContext(globalContext)
   const { user } = context.state
-  console.log(user)
-  useEffect(() => console.log(user), [user])
 
   return (
     <Layout>
@@ -24,7 +23,9 @@ const IndexPage = () => {
             paddingBottom: "60px",
           }}
         >
-          <Homeview />
+          <MealplanContextProvider>
+            <Homeview />
+          </MealplanContextProvider>
         </div>
       )}
     </Layout>

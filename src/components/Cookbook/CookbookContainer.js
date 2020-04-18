@@ -64,7 +64,7 @@ const RECIPE_BOOKS_QUERY = gql`
 const CookbookContainer = () => {
   const context = useContext(globalContext)
   const { id } = context.state.user
-  const { loading, error, data } = useQuery(RECIPE_BOOKS_QUERY, {
+  const { loading, data } = useQuery(RECIPE_BOOKS_QUERY, {
     variables: { id: id },
   })
 

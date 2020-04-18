@@ -24,7 +24,7 @@ const CurrentDay = ({ mealPlan }) => {
     }
   }
   const sumDailyKcal = () => {
-    const { meals } = mealPlan.days[0]
+    const { meals } = mealPlan.days[5]
     let kcalArray = []
     meals.map(d => d.recipe.ingredients.map(i => kcalArray.push(i.kcal)))
     const totalKcal = kcalArray.reduce((a, b) => {
