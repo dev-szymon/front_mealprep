@@ -32,7 +32,7 @@ module.exports = {
       options: {
         typeName: "MealprepAPI",
         fieldName: "mealPrep",
-        url: "http://localhost:5000/graphql",
+        url: process.env.API_URI,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
