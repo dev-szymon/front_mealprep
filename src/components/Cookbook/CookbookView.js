@@ -2,17 +2,25 @@ import React, { useState } from "react"
 import Nav from "../layout/Nav"
 import Recipes from "../Cookbook/Recipes"
 
-const CookbookView = ({ recipesCreated, recipesSaved }) => {
+const CookbookView = ({ recipesCreated, recipesSaved, refetch }) => {
   const [myRecipes, setMyRecipes] = useState(true)
   return (
     <div>
       <section style={{ padding: "0 20px" }}>
         <Nav>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <button type="button" onClick={() => setMyRecipes(true)}>
+            <button
+              className="btn"
+              type="button"
+              onClick={() => setMyRecipes(true)}
+            >
               My recipes
             </button>
-            <button type="button" onClick={() => setMyRecipes(false)}>
+            <button
+              className="btn"
+              type="button"
+              onClick={() => setMyRecipes(false)}
+            >
               Saved
             </button>
           </div>
@@ -21,6 +29,7 @@ const CookbookView = ({ recipesCreated, recipesSaved }) => {
           <>
             <h1>Created recipes</h1>
             <Recipes
+              refetch={refetch}
               recipeGroup={recipesCreated}
               actionText={"Make a new recipe!"}
             />
@@ -32,6 +41,7 @@ const CookbookView = ({ recipesCreated, recipesSaved }) => {
           <>
             <h1>Saved recipes</h1>
             <Recipes
+              refetch={refetch}
               recipeGroup={recipesSaved}
               actionText={"Make a new recipe or browse other people recipes!"}
             />

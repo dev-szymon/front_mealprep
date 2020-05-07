@@ -42,23 +42,7 @@ const Homeview = () => {
     variables: { id: id },
   })
 
-  // code below doesn't work, need to update context somehow but tried everything and it returns undefined
-
-  // useEffect(() => {
-  //   const onCompleted = data => {
-  //     mealContext.fillMealplan(data.getUser)
-  //   }
-  //   const onError = error => {
-  //     console.log(error)
-  //   }
-  //   if (onCompleted || onError) {
-  //     if (onCompleted && !loading && !error) {
-  //       onCompleted(data)
-  //     } else if (onError && !loading && error) {
-  //       onError(error)
-  //     }
-  //   }
-  // }, [loading, data, error])
+  console.log(context.state.user.cart)
 
   // returns meals from the passed day and a button if they are < than 6
   const displayMeals = day => {
@@ -74,7 +58,12 @@ const Homeview = () => {
           />
         ) : null}
         {day.meals.map((m, i) => (
-          <Meal key={i} data={m} refetch={refetch} />
+          <Meal
+            key={i}
+            data={m}
+            refetch={refetch}
+            cart={context.state.user.cart.id}
+          />
         ))}
       </div>
     )

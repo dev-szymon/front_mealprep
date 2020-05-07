@@ -15,6 +15,9 @@ const NEW_USER = gql`
     newUser(username: $username, email: $email, password: $password) {
       id
       username
+      cart {
+        id
+      }
     }
   }
 `

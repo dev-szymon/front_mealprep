@@ -11,6 +11,15 @@ const LOGIN_USER = gql`
     logIn(email: $email, password: $password) {
       id
       username
+      cart {
+        id
+        owner {
+          username
+        }
+        products {
+          id
+        }
+      }
     }
   }
 `

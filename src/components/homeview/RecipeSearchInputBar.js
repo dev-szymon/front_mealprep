@@ -5,6 +5,7 @@ import gql from "graphql-tag"
 import { useMutation, useQuery } from "@apollo/react-hooks"
 import { globalContext } from "../../context/globalContext"
 import Loading from "../Loading"
+import FormSelectField from "../forms/FormSelectField"
 
 const MEALS_QUERY = gql`
   query browseRecipes($id: ID!) {
@@ -28,12 +29,9 @@ const MEALS_QUERY = gql`
 `
 
 const ADD_MEAL = gql`
-  mutation NewMeal($day: ID!, $recipe: ID!, $label: String!) {
-    addMeal(day: $day, recipe: $recipe, label: $label) {
+  mutation NewMeal($day: ID!, $recipe: ID!, $label: String!, $cart: ID!) {
+    addMeal(day: $day, recipe: $recipe, label: $label, cart: $cart) {
       id
-      recipe {
-        name
-      }
     }
   }
 `
@@ -45,6 +43,7 @@ const RecipeSearchInputBar = props => {
     variables: { id: id },
   })
   const [filtered, setFiltered] = useState([])
+  const [labelInput, setLabelInput] = useState("brf")
 
   const [addMeal] = useMutation(ADD_MEAL)
 
@@ -52,30 +51,41 @@ const RecipeSearchInputBar = props => {
     <Formik
       initialValues={{
         search: "",
+        label: "brf",
       }}
     >
       <Form
         onChange={e => {
-          const { recipesCreated, recipesSaved } = data.getUser
+          if (e.target.tagName === "INPUT") {
+            const { recipesCreated, recipesSaved } = data.getUser
 
-          const matchedRecipesCreated = recipesCreated.filter(r =>
-            r.name.toLowerCase().includes(e.target.value.toLowerCase())
-          )
+            const matchedRecipesCreated = recipesCreated.filter(r =>
+              r.name.toLowerCase().includes(e.target.value.toLowerCase())
+            )
 
-          const matchedRecipesSaved = recipesSaved.filter(r =>
-            r.name.toLowerCase().includes(e.target.value.toLowerCase())
-          )
+            const matchedRecipesSaved = recipesSaved.filter(r =>
+              r.name.toLowerCase().includes(e.target.value.toLowerCase())
+            )
 
-          const matches = [...matchedRecipesCreated, ...matchedRecipesSaved]
-          setFiltered(
-            matches
-              .flat()
-              .filter((item, index) => matches.indexOf(item) === index)
-          )
+            const matches = [...matchedRecipesCreated, ...matchedRecipesSaved]
+            setFiltered(
+              matches
+                .flat()
+                .filter((item, index) => matches.indexOf(item) === index)
+            )
+          }
+          if (e.target.tagName === "SELECT") {
+            setLabelInput(e.target.value)
+          }
         }}
       >
-        <FormTextField name="search" type="search" autoComplete="off" />
-
+        <div style={{ display: "flex" }}>
+          <FormTextField name="search" type="search" autoComplete="off" />
+          <FormSelectField
+            name="label"
+            options={["brf", "2ndbrf", "lunch", "dinner", "snack", "supper"]}
+          />
+        </div>
         {loading ? (
           <Loading />
         ) : (
@@ -85,13 +95,15 @@ const RecipeSearchInputBar = props => {
                 <li key={i}>
                   {r.name}
                   <button
+                    className="btn"
                     type="button"
                     onClick={() => {
                       addMeal({
                         variables: {
                           day: props.currentDay.id,
                           recipe: r.id,
-                          label: "brf",
+                          label: labelInput,
+                          cart: context.state.user.cart.id,
                         },
                       })
                       props.refetch()

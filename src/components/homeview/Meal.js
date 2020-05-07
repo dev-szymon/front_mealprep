@@ -4,8 +4,8 @@ import gql from "graphql-tag"
 import { useMutation } from "@apollo/react-hooks"
 
 const REMOVE_MEAL = gql`
-  mutation NewMeal($meal: ID!) {
-    removeMeal(meal: $meal) {
+  mutation NewMeal($meal: ID!, $cart: ID!) {
+    removeMeal(meal: $meal, cart: $cart) {
       id
       recipe {
         name
@@ -14,7 +14,7 @@ const REMOVE_MEAL = gql`
   }
 `
 
-const Meal = ({ data, refetch }) => {
+const Meal = ({ data, refetch, cart }) => {
   const { ingredients, name } = data.recipe
   const sumIngredientsKcal = () => {
     let kcalArray = []
@@ -40,11 +40,13 @@ const Meal = ({ data, refetch }) => {
         </div>
       </div>
       <button
+        className="btn"
         type="button"
         onClick={() => {
           removeMeal({
             variables: {
               meal: data.id,
+              cart: cart,
             },
           })
           refetch()

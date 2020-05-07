@@ -61,10 +61,11 @@ const RECIPE_BOOKS_QUERY = gql`
     }
   }
 `
+
 const CookbookContainer = () => {
   const context = useContext(globalContext)
   const { id } = context.state.user
-  const { loading, data } = useQuery(RECIPE_BOOKS_QUERY, {
+  const { loading, data, refetch } = useQuery(RECIPE_BOOKS_QUERY, {
     variables: { id: id },
   })
 
@@ -80,6 +81,7 @@ const CookbookContainer = () => {
       <CookbookView
         recipesCreated={data.getUser.recipesCreated}
         recipesSaved={data.getUser.recipesSaved}
+        refetch={refetch}
       />
     </div>
   )

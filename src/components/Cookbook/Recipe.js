@@ -1,8 +1,19 @@
 import React from "react"
 import { IngredientsUsed } from "../../functions/index"
+import gql from "graphql-tag"
+import { useMutation } from "@apollo/react-hooks"
 
-const Recipe = ({ data }) => {
+const DELETE_RECIPE = gql`
+  mutation deleteRecipe($recipeID: ID!) {
+    deleteRecipe(recipeID: $recipeID) {
+      id
+    }
+  }
+`
+
+const Recipe = ({ data, refetch }) => {
   const {
+    id,
     name,
     ingredients,
     createdBy,
@@ -12,6 +23,11 @@ const Recipe = ({ data }) => {
     cookBooked,
     likes,
   } = data
+  const [deleteRecipe] = useMutation(DELETE_RECIPE, {
+    onCompleted() {
+      refetch()
+    },
+  })
 
   return (
     <div>
@@ -22,6 +38,14 @@ const Recipe = ({ data }) => {
       <h4>author: {createdBy.username}</h4>
       <h4>likes: {likes.length}</h4>
       <h4>cookbooked: {cookBooked.length}</h4>
+      <button
+        type="button"
+        onClick={() => {
+          deleteRecipe({ variables: { recipeID: id } })
+        }}
+      >
+        remove recipe
+      </button>
     </div>
   )
 }
