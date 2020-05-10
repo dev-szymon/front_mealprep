@@ -1,3 +1,6 @@
+if (process.env.NODE_ENV === "development") {
+  require("dotenv").config()
+}
 import React from "react"
 import { ApolloProvider } from "react-apollo"
 import { client } from "./client"

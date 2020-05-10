@@ -32,7 +32,7 @@ module.exports = {
       options: {
         typeName: "MealprepAPI",
         fieldName: "mealPrep",
-        url: process.env.API_URI,
+        url: process.env.API_CONNECTION,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

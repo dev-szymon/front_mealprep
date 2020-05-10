@@ -51,7 +51,6 @@ typings/
 # Output of 'npm pack'
 *.tgz
 
-variables.js
 # dotenv environment variable files
 .env*
 
