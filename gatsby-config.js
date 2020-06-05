@@ -33,9 +33,9 @@ module.exports = {
         typeName: "MealprepAPI",
         fieldName: "mealPrep",
         url:
-          process.env.NODE_ENV == "production"
-            ? process.env.NODE_ENV
-            : `http://localhost:5000/graphql`,
+          process.env.NODE_ENV != "production"
+            ? `http://localhost:5000/graphql`
+            : process.env.NODE_ENV,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
