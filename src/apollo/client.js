@@ -3,8 +3,8 @@ import fetch from "isomorphic-fetch"
 
 export const client = new ApolloClient({
   uri:
-    process.env.NODE_ENV == "production"
-      ? process.env.NODE_ENV
-      : `http://localhost:5000/graphql`,
+    process.env.NODE_ENV !== "production"
+      ? `https://www.eatwell.club/graphql`
+      : process.env.NODE_ENV,
   fetch,
 })
