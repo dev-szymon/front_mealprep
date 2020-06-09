@@ -36,6 +36,9 @@ module.exports = {
           process.env.NODE_ENV !== "production"
             ? `https://www.eatwell.club/graphql`
             : process.env.API_CONNECTION,
+        headers: {
+          "Content-Type": "application/graphql",
+        },
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
