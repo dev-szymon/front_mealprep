@@ -34,10 +34,14 @@ module.exports = {
         fieldName: "mealPrep",
         url:
           process.env.NODE_ENV !== "production"
-            ? `https://www.eatwell.club/graphql`
+            ? `https://eatwell.club/graphql`
             : process.env.API_CONNECTION,
         headers: {
-          "Content-Type": "application/graphql",
+          "Content-Type": "application/json",
+          "Accept-Encoding": "gzip, deflate, br",
+          Accept: "application/json",
+          Connection: "keep-alive",
+          DNT: "1",
         },
       },
     },
