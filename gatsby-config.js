@@ -35,10 +35,6 @@ module.exports = {
         url: process.env.API_CONNECTION,
         headers: {
           "Content-Type": "application/json",
-          "Accept-Encoding": "gzip, deflate, br",
-          Accept: "application/json",
-          Connection: "keep-alive",
-          DNT: "1",
         },
       },
     },

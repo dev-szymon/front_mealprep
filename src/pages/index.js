@@ -14,16 +14,25 @@ const IndexPage = () => {
       }
     }
   `
-  const { loading, data } = useQuery(USERS_QUERY)
+  const { loading, data, error } = useQuery(USERS_QUERY)
   if (data) {
     console.log(data)
+  }
+
+  if (error) {
+    return (
+      <Layout>
+        <SEO title="Home" />
+        <h1>Hello World</h1>
+        <p>error</p>
+      </Layout>
+    )
   }
 
   return (
     <Layout>
       <SEO title="Home" />
       <h1>Hello World</h1>
-      <p>index page</p>
       {loading ? (
         <Loading />
       ) : (
