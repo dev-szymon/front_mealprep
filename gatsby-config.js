@@ -32,7 +32,7 @@ module.exports = {
       options: {
         typeName: "MealprepAPI",
         fieldName: "mealPrep",
-        url: process.env.API_CONNECTION,
+        url: "https://eatwell.club/graphql",
         headers: {
           "Content-Type": "application/json",
         },

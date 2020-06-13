@@ -19,6 +19,9 @@ const IndexPage = () => {
     console.log(data)
   }
 
+  console.log(process.env)
+  console.log(process.env.API_CONNECTION)
+
   if (error) {
     return (
       <Layout>
