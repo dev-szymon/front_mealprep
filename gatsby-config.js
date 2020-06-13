@@ -32,7 +32,10 @@ module.exports = {
       options: {
         typeName: "MealprepAPI",
         fieldName: "mealPrep",
-        url: `https://eatwell.club/graphql`,
+        url:
+          process.env.NODE_ENV !== "production"
+            ? "http://localhost:5000/graphql"
+            : process.env.API_CONNECTION,
         headers: {
           "Content-Type": "application/json",
           "Accept-Encoding": "gzip, deflate, br",
