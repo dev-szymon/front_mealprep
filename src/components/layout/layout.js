@@ -30,7 +30,6 @@ const Layout = ({ children }) => {
           height: "100vh",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-between",
         }}
       >
         <Header siteTitle={data.site.siteMetadata.title} />

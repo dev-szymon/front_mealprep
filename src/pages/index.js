@@ -1,32 +1,40 @@
-import React, { useContext } from "react"
+import React from "react"
 import Layout from "../components/layout/layout"
+import Loading from "../components/Loading"
+import gql from "graphql-tag"
+import { useQuery } from "@apollo/react-hooks"
 import SEO from "../components/seo"
-import { globalContext } from "../context/globalContext"
-import { MealplanContextProvider } from "../context/mealplanContext"
-import WelcomePage from "../components/forms/WelcomePage"
-import Homeview from "../components/homeview/Homeview"
 
 const IndexPage = () => {
-  const context = useContext(globalContext)
-  const { user } = context.state
+  const USERS_QUERY = gql`
+    query {
+      getUsers {
+        username
+        id
+      }
+    }
+  `
+  const { loading, data } = useQuery(USERS_QUERY)
+  if (data) {
+    console.log(data)
+  }
 
   return (
     <Layout>
       <SEO title="Home" />
-      {user === null ? (
-        <WelcomePage />
+      <h1>Hello World</h1>
+      <p>index page</p>
+      {loading ? (
+        <Loading />
       ) : (
-        <div
-          style={{
-            position: "relative",
-            top: "120px",
-            paddingBottom: "60px",
-          }}
-        >
-          <MealplanContextProvider>
-            <Homeview />
-          </MealplanContextProvider>
-        </div>
+        data.getUsers.map(u => {
+          return (
+            <div>
+              <h1>{u.username}</h1>
+              <p>{u.id}</p>
+            </div>
+          )
+        })
       )}
     </Layout>
   )

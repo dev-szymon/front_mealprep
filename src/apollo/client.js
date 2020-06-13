@@ -1,10 +1,10 @@
 import ApolloClient from "apollo-boost"
 import fetch from "isomorphic-fetch"
+import { createHttpLink } from "apollo-link-http"
+
+const link = createHttpLink({ uri: "https://eatwell.club/graphql" })
 
 export const client = new ApolloClient({
-  uri:
-    process.env.NODE_ENV !== "production"
-      ? `https://www.eatwell.club/graphql`
-      : process.env.NODE_ENV,
+  link,
   fetch,
 })
