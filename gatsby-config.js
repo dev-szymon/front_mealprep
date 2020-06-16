@@ -35,10 +35,6 @@ module.exports = {
         url: "https://eatwell.club/graphql",
         headers: {
           "Content-Type": "application/json",
-          "Accept-Encoding": "gzip, deflate, br",
-          Accept: "application/json",
-          Connection: "keep-alive",
-          DNT: "1",
         },
       },
     },
