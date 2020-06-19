@@ -34,6 +34,7 @@ module.exports = {
         fieldName: "mealPrep",
         url: "https://eatwell.club/graphql",
         headers: {
+          Authorization: "",
           "Content-Type": "application/json",
         },
       },

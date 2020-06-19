@@ -15,12 +15,6 @@ const IndexPage = () => {
     }
   `
   const { loading, data, error } = useQuery(USERS_QUERY)
-  if (data) {
-    console.log(data)
-  }
-
-  console.log(process.env)
-  console.log(process.env.API_CONNECTION)
 
   if (error) {
     return (
