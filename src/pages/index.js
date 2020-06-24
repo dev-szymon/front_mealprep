@@ -30,6 +30,18 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Home" />
       <h1>Hello World</h1>
+      <input
+        type="file"
+        id="avatar"
+        style={{
+          height: "68px",
+          width: "68px",
+          backgroundColor: "green",
+        }}
+        name="avatar"
+        accept="image/png, image/jpeg"
+      ></input>
+
       {loading ? (
         <Loading />
       ) : (
