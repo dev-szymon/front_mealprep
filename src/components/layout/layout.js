@@ -10,7 +10,7 @@ import "./normalize.css"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Header from "./Header"
-import Footer from "./Footer"
+import MenuBar from "./MenuBar"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -28,13 +28,15 @@ const Layout = ({ children }) => {
       <div
         style={{
           height: "100vh",
+          width: "80vw",
+          margin: "0 auto",
           display: "flex",
           flexDirection: "column",
         }}
       >
         <Header siteTitle={data.site.siteMetadata.title} />
         <main>{children}</main>
-        <Footer />
+        <MenuBar />
       </div>
     </>
   )

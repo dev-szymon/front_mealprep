@@ -1,28 +1,25 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import Logo from "../../images/logo.svg"
 
 const Header = ({ siteTitle }) => (
   <header
     style={{
       width: "100%",
-      height: "50px",
-      background: `linear-gradient(to right, rgb(46, 136, 88), rgb(12, 190, 154))`,
+      height: "68px",
       display: "flex",
-      alignItems: "flex-end",
-      zIndex: "1",
+      alignItems: "center",
+      justifyContent: "space-between",
+      borderBottom: "2px solid rgba(0,0,0,0.55)",
+      zIndex: "100",
     }}
   >
-    <h1
-      style={{
-        width: "fit-content",
-        marginLeft: "1rem",
-      }}
-    >
+    <h1 style={{ width: "fit-content" }}>
       <Link
         to="/"
         style={{
-          color: `white`,
+          color: "rgba(0,0,0, 0.55)",
           display: "block",
           textDecoration: `none`,
         }}
@@ -30,6 +27,7 @@ const Header = ({ siteTitle }) => (
         {siteTitle}
       </Link>
     </h1>
+    <img src={Logo} alt="ananaX logo" />
   </header>
 )
 

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef } from "react"
 import Layout from "../components/layout/layout"
 import Loading from "../components/Loading"
 import gql from "graphql-tag"
@@ -14,6 +14,7 @@ const IndexPage = () => {
       }
     }
   `
+  const imginput = useRef(null)
   const { loading, data, error } = useQuery(USERS_QUERY)
 
   if (error) {
@@ -30,17 +31,6 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Home" />
       <h1>Hello World</h1>
-      <input
-        type="file"
-        id="avatar"
-        style={{
-          height: "68px",
-          width: "68px",
-          backgroundColor: "green",
-        }}
-        name="avatar"
-        accept="image/png, image/jpeg"
-      ></input>
 
       {loading ? (
         <Loading />
