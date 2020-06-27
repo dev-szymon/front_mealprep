@@ -8,13 +8,10 @@ const Header = ({ siteTitle }) => (
     style={{
       width: "100%",
       height: "48px",
-      position: "sticky",
-      top: "0",
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
       borderBottom: "2px solid rgba(0,0,0,0.55)",
-      zIndex: "100",
     }}
   >
     <h1 style={{ width: "fit-content", fontFamily: "Montserrat, sans-serif" }}>
@@ -36,11 +33,6 @@ const Header = ({ siteTitle }) => (
     />
   </header>
 )
-
-// linear-gradient(to right, rgb(46, 136, 88), rgb(147, 26, 176));
-// linear-gradient(to right, rgb(46, 136, 88), rgb(119, 190, 12));
-// linear-gradient(to right, rgb(46, 136, 88), rgb(61, 92, 141));
-// linear-gradient(to right, rgb(46, 136, 88), rgb(12, 190, 154));
 
 Header.propTypes = {
   siteTitle: PropTypes.string,

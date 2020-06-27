@@ -31,15 +31,12 @@ const Layout = ({ children }) => {
           width: "80vw",
           margin: "0 auto",
           display: "flex",
+          justifyContent: "space-between",
           flexDirection: "column",
         }}
       >
         <Header siteTitle={data.site.siteMetadata.title} />
-        <main
-          style={{ height: "calc(100vh - 48px - 48px)", overflow: "scroll" }}
-        >
-          {children}
-        </main>
+        <main style={{ height: "100%", overflow: "scroll" }}>{children}</main>
         <MenuBar />
       </div>
     </>

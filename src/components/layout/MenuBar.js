@@ -7,35 +7,31 @@ import Dots from "../../images/dots.svg"
 const MenuBar = () => (
   <nav
     style={{
-      position: "fixed",
       display: "flex",
       alignItems: "center",
-      bottom: "0",
       width: "80vw",
       height: "48px",
       borderTop: "2px solid rgba(0,0,0,0.55)",
-      zIndex: "200",
     }}
   >
     <ul
       style={{
         display: "flex",
-        listStyle: "none",
         width: "100%",
         justifyContent: "space-between",
       }}
     >
       <li>
-        <img src={Home} />
+        <img style={{ height: "24px" }} src={Home} />
       </li>
       <li>
-        <img src={Calendar} />
+        <img style={{ height: "24px" }} src={Calendar} />
       </li>
       <li>
-        <img src={Book} />
+        <img style={{ height: "24px" }} src={Book} />
       </li>
       <li>
-        <img src={Dots} />
+        <img style={{ height: "24px" }} src={Dots} />
       </li>
     </ul>
   </nav>
