@@ -10,6 +10,7 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Header from "./Header"
 import MenuBar from "./MenuBar"
+import "./layout-component.css"
 import "./normalize.css"
 
 const Layout = ({ children }) => {
@@ -35,21 +36,9 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <div
-        style={{
-          height:
-            "100vh" /* Fallback for browsers that do not support Custom Properties */,
-          height: "calc(var(--vh, 1vh) * 100)",
-          overflow: "hidden",
-          width: "80vw",
-          margin: "0 auto",
-          display: "flex",
-          justifyContent: "space-between",
-          flexDirection: "column",
-        }}
-      >
+      <div className="layout_container">
         <Header siteTitle={data.site.siteMetadata.title} />
-        <main style={{ height: "100%", overflow: "scroll" }}>{children}</main>
+        <main>{children}</main>
         <MenuBar />
       </div>
     </>

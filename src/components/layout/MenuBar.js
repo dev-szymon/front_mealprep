@@ -22,16 +22,24 @@ const MenuBar = () => (
       }}
     >
       <li>
-        <img style={{ height: "24px" }} src={Home} />
+        <img style={{ height: "24px" }} src={Home} alt="navigation home" />
       </li>
       <li>
-        <img style={{ height: "24px" }} src={Calendar} />
+        <img
+          style={{ height: "24px" }}
+          src={Calendar}
+          alt="navigation calendar"
+        />
       </li>
       <li>
-        <img style={{ height: "24px" }} src={Book} />
+        <img style={{ height: "24px" }} src={Book} alt="navigation book" />
       </li>
       <li>
-        <img style={{ height: "24px" }} src={Dots} />
+        <img
+          style={{ height: "24px" }}
+          src={Dots}
+          alt="navigation more options"
+        />
       </li>
     </ul>
   </nav>
