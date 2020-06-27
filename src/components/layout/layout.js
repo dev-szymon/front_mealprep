@@ -40,6 +40,7 @@ const Layout = ({ children }) => {
           height:
             "100vh" /* Fallback for browsers that do not support Custom Properties */,
           height: "calc(var(--vh, 1vh) * 100)",
+          overflow: "hidden",
           width: "80vw",
           margin: "0 auto",
           display: "flex",
