@@ -12,7 +12,7 @@ const MenuBar = () => (
       alignItems: "center",
       bottom: "0",
       width: "80vw",
-      height: "68px",
+      height: "48px",
       borderTop: "2px solid rgba(0,0,0,0.55)",
       zIndex: "100",
     }}
