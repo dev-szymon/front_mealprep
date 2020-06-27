@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
+import React, { useEffect } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Header from "./Header"
@@ -23,11 +23,23 @@ const Layout = ({ children }) => {
     }
   `)
 
+  useEffect(() => {
+    let vh = window.innerHeight * 0.01
+    document.documentElement.style.setProperty("--vh", `${vh}px`)
+    window.addEventListener("resize", () => {
+      // We execute the same script as before
+      let vh = window.innerHeight * 0.01
+      document.documentElement.style.setProperty("--vh", `${vh}px`)
+    })
+  }, [])
+
   return (
     <>
       <div
         style={{
-          height: "100vh",
+          height:
+            "100vh" /* Fallback for browsers that do not support Custom Properties */,
+          height: "calc(var(--vh, 1vh) * 100)",
           width: "80vw",
           margin: "0 auto",
           display: "flex",
