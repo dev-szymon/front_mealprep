@@ -44,6 +44,78 @@ const IndexPage = () => {
           )
         })
       )}
+      {loading ? (
+        <Loading />
+      ) : (
+        data.getUsers.map(u => {
+          return (
+            <div>
+              <h1>{u.username}</h1>
+              <p>{u.id}</p>
+            </div>
+          )
+        })
+      )}
+      {loading ? (
+        <Loading />
+      ) : (
+        data.getUsers.map(u => {
+          return (
+            <div>
+              <h1>{u.username}</h1>
+              <p>{u.id}</p>
+            </div>
+          )
+        })
+      )}
+      {loading ? (
+        <Loading />
+      ) : (
+        data.getUsers.map(u => {
+          return (
+            <div>
+              <h1>{u.username}</h1>
+              <p>{u.id}</p>
+            </div>
+          )
+        })
+      )}
+      {loading ? (
+        <Loading />
+      ) : (
+        data.getUsers.map(u => {
+          return (
+            <div>
+              <h1>{u.username}</h1>
+              <p>{u.id}</p>
+            </div>
+          )
+        })
+      )}
+      {loading ? (
+        <Loading />
+      ) : (
+        data.getUsers.map(u => {
+          return (
+            <div>
+              <h1>{u.username}</h1>
+              <p>{u.id}</p>
+            </div>
+          )
+        })
+      )}
+      {loading ? (
+        <Loading />
+      ) : (
+        data.getUsers.map(u => {
+          return (
+            <div>
+              <h1>{u.username}</h1>
+              <p>{u.id}</p>
+            </div>
+          )
+        })
+      )}
     </Layout>
   )
 }

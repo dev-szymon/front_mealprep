@@ -8,6 +8,8 @@ const Header = ({ siteTitle }) => (
     style={{
       width: "100%",
       height: "48px",
+      position: "sticky",
+      top: "0",
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
@@ -15,7 +17,7 @@ const Header = ({ siteTitle }) => (
       zIndex: "100",
     }}
   >
-    <h1 style={{ width: "fit-content" }}>
+    <h1 style={{ width: "fit-content", fontFamily: "Montserrat, sans-serif" }}>
       <Link
         to="/"
         style={{
@@ -27,7 +29,11 @@ const Header = ({ siteTitle }) => (
         {siteTitle}
       </Link>
     </h1>
-    <img src={Logo} alt="ananaX logo" />
+    <img
+      src={Logo}
+      alt="ananaX logo"
+      style={{ height: "36px", width: "36px" }}
+    />
   </header>
 )
 

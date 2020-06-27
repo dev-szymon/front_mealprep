@@ -6,11 +6,11 @@
  */
 
 import React from "react"
-import "./normalize.css"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Header from "./Header"
 import MenuBar from "./MenuBar"
+import "./normalize.css"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -35,7 +35,11 @@ const Layout = ({ children }) => {
         }}
       >
         <Header siteTitle={data.site.siteMetadata.title} />
-        <main>{children}</main>
+        <main
+          style={{ height: "calc(100vh - 48px - 48px)", overflow: "scroll" }}
+        >
+          {children}
+        </main>
         <MenuBar />
       </div>
     </>

@@ -14,12 +14,13 @@ const MenuBar = () => (
       width: "80vw",
       height: "48px",
       borderTop: "2px solid rgba(0,0,0,0.55)",
-      zIndex: "100",
+      zIndex: "200",
     }}
   >
     <ul
       style={{
         display: "flex",
+        listStyle: "none",
         width: "100%",
         justifyContent: "space-between",
       }}
