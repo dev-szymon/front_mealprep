@@ -1,8 +1,6 @@
 import React, { useState } from "react"
-import { gql } from "apollo-boost"
-import { useMutation } from "@apollo/react-hooks"
 
-const CredentialsForm = ({ form }) => {
+const CredentialsForm = ({ form, action }) => {
   const [values, setValues] = useState()
 
   const handleChange = event => {
@@ -12,25 +10,13 @@ const CredentialsForm = ({ form }) => {
     })
     console.log(values)
   }
-  const NEW_USER = gql`
-    mutation newUser($username: String!, $email: String!, $password: String!) {
-      newUser(username: $username, email: $email, password: $password)
-    }
-  `
-
-  const [newUser, { loading, error }] = useMutation(NEW_USER, {
-    onCompleted: data => console.log(data),
-  })
 
   return (
     <form
       onSubmit={event => {
         event.preventDefault()
         try {
-          newUser({
-            variables: values,
-          })
-          console.log({ variables: values })
+          action({ variables: values })
         } catch (err) {
           console.log(err)
         }
@@ -50,7 +36,9 @@ const CredentialsForm = ({ form }) => {
         <label htmlFor="password">hasło</label>
         <input type="password" name="password" onChange={handleChange} />
       </div>
-      <button type="submit">Zaloguj</button>
+      <button type="submit">
+        {form === "register" ? "Zarejestruj się" : "Zaloguj"}
+      </button>
     </form>
   )
 }
