@@ -32,9 +32,8 @@ module.exports = {
       options: {
         typeName: "MealprepAPI",
         fieldName: "mealPrep",
-        url: "http://localhost:5000/graphql",
+        url: "https://eatwell.club/graphql",
         headers: {
-          Authorization: "",
           "Content-Type": "application/json",
         },
       },

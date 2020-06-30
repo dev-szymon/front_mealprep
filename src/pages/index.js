@@ -17,7 +17,7 @@ const IndexPage = () => {
       </nav>
       {registerView ? <RegisterForm /> : <LoginForm />}
       <button onClick={() => localStorage.setItem("token", null)}>
-        log out
+        wyloguj
       </button>
     </Layout>
   )

@@ -24,7 +24,7 @@ const CredentialsForm = ({ form, action }) => {
     >
       {form === "register" ? (
         <div>
-          <label htmlFor="email">nazwa użytkownika</label>
+          <label htmlFor="username">nazwa użytkownika</label>
           <input type="username" name="username" onChange={handleChange} />
         </div>
       ) : null}
