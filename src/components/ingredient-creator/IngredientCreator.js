@@ -41,7 +41,7 @@ const IngredientCreator = () => {
     onCompleted: data => console.log(data),
     context: {
       headers: {
-        authorization: localStorage.token,
+        authorization: "",
       },
     },
   })
