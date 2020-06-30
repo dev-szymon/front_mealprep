@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import Layout from "../components/layout/layout"
 import SEO from "../components/seo"
 import LoginForm from "../components/LoginForm"
+import { Link } from "gatsby"
 import RegisterForm from "../components/RegisterForm"
 
 const IndexPage = () => {
@@ -19,6 +20,11 @@ const IndexPage = () => {
       <button onClick={() => localStorage.setItem("token", null)}>
         wyloguj
       </button>
+      <div>
+        <Link to="/create-ingredient">
+          <button>dodaj składnik</button>
+        </Link>
+      </div>
     </Layout>
   )
 }

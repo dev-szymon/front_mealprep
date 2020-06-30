@@ -1,15 +1,24 @@
-import React, { useState, useRef, useCallback } from "react"
+import React, { useState } from "react"
 import { gql } from "apollo-boost"
 import { useMutation } from "@apollo/react-hooks"
 import { useDropzone } from "react-dropzone"
 import "./IngredientCreator.css"
 
 const IngredientCreator = () => {
-  const [values, setValues] = useState()
-  const imgField = useRef()
-  const onDrop = useCallback(acceptedFiles => {
-    console.log(acceptedFiles)
-  })
+  const [values, setValues] = useState({ images: [], tips: [] })
+  const onDrop = acceptedFiles => {
+    const uploads = [values.images, acceptedFiles].flat()
+    if (uploads.length > 3) {
+      console.log("too many files")
+      uploads.splice(2, uploads.length - 3)
+      return setValues({
+        ...values,
+        images: uploads,
+      })
+    }
+
+    return setValues({ ...values, images: uploads })
+  }
   const { getRootProps, getInputProps } = useDropzone({ onDrop })
 
   const parseNumbers = (name, value, exceptionsArray) =>
@@ -34,8 +43,7 @@ const IngredientCreator = () => {
       }
     }
   `
-
-  // context provides token from localStorage because gatsby config only provides that on build
+  // need to provide token via 3rd party
 
   const [newIngredient, { loading, error }] = useMutation(NEW_INGREDIENT, {
     onCompleted: data => console.log(data),
@@ -52,11 +60,7 @@ const IngredientCreator = () => {
         onSubmit={event => {
           event.preventDefault()
           try {
-            values.images
-              ? newIngredient({ variables: { ingredient: values } })
-              : newIngredient({
-                  variables: { ingredient: { ...values, images: [] } },
-                })
+            console.log(values)
           } catch (err) {
             console.log(err)
           }
@@ -66,31 +70,39 @@ const IngredientCreator = () => {
           <label htmlFor="name">nazwa produktu</label>
           <input type="name" name="name" onChange={handleChange} />
         </div>
-        {/* <fieldset
-          name="images"
-          ref={imgField}
-          {...getInputProps()}
-          onChange={e => {
-            setValues({
-              ...values,
-              images: Array.from(imgField.current.elements)
-                .map(e => Array.from(e.files))
-                .flat(),
-            })
-          }}
-        > */}
         <div className="img-input-container">
           <div className="img-input" {...getRootProps()}>
+            {values.images[0] ? (
+              <img
+                src={URL.createObjectURL(values.images[0])}
+                alt="first upload image"
+              ></img>
+            ) : (
+              <h1>+</h1>
+            )}
             <input type="file" {...getInputProps()} />
-            <h1>+</h1>
           </div>
           <div className="img-input" {...getRootProps()}>
+            {values.images[1] ? (
+              <img
+                src={URL.createObjectURL(values.images[1])}
+                alt="first upload image"
+              ></img>
+            ) : (
+              <h1>+</h1>
+            )}
             <input type="file" {...getInputProps()} />
-            <h1>+</h1>
           </div>
           <div className="img-input" {...getRootProps()}>
+            {values.images[2] ? (
+              <img
+                src={URL.createObjectURL(values.images[2])}
+                alt="first upload image"
+              ></img>
+            ) : (
+              <h1>+</h1>
+            )}
             <input type="file" {...getInputProps()} />
-            <h1>+</h1>
           </div>
         </div>
 
