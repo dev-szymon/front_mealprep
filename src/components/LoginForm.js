@@ -9,8 +9,19 @@ const LoginForm = () => {
       logIn(email: $email, password: $password)
     }
   `
+
+  let inMemoryToken
+
   const [logIn, { loading, error }] = useMutation(LOG_IN, {
-    onCompleted: data => localStorage.setItem("token", data.logIn),
+    onCompleted: data => {
+      inMemoryToken = {
+        token: data.logIn,
+      }
+      console.log(data)
+      // if (!noRedirect) {
+      //   Router.push("/app")
+      // }
+    },
   })
 
   return <CredentialsForm action={logIn} form={"login"} />

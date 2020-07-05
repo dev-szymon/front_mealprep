@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `mealprep`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    description: `Recipes social media project.`,
     author: `@gatsbyjs`,
   },
   plugins: [
@@ -32,7 +32,7 @@ module.exports = {
       options: {
         typeName: "MealprepAPI",
         fieldName: "mealPrep",
-        url: "https://eatwell.club/graphql",
+        url: "http://localhost:5000/graphql",
         headers: {
           "Content-Type": "application/json",
         },

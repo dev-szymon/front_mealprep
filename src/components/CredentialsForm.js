@@ -8,7 +8,6 @@ const CredentialsForm = ({ form, action }) => {
       ...values,
       [event.target.name]: event.target.value,
     })
-    console.log(values)
   }
 
   return (
