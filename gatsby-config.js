@@ -34,10 +34,7 @@ module.exports = {
       options: {
         typeName: "MealprepAPI",
         fieldName: "mealPrep",
-        url:
-          process.env.NODE_ENV === "development"
-            ? process.env.GATSBY_GRAPHQL_API
-            : process.env.production.GATSBY_GRAPHQL_API,
+        url: process.env.GATSBY_GRAPHQL_API,
         headers: {
           "Content-Type": "application/json",
         },
