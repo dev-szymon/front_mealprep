@@ -2,6 +2,7 @@ import React from "react"
 import { gql } from "apollo-boost"
 import { useMutation } from "@apollo/react-hooks"
 import CredentialsForm from "./CredentialsForm"
+import { setAccessToken } from "../auth"
 
 const LoginForm = () => {
   const LOG_IN = gql`
@@ -10,17 +11,9 @@ const LoginForm = () => {
     }
   `
 
-  let inMemoryToken
-
   const [logIn, { loading, error }] = useMutation(LOG_IN, {
     onCompleted: data => {
-      inMemoryToken = {
-        token: data.logIn,
-      }
-      console.log(data)
-      // if (!noRedirect) {
-      //   Router.push("/app")
-      // }
+      setAccessToken(data.logIn)
     },
   })
 
