@@ -1,5 +1,4 @@
 import React from "react"
-require("dotenv").config()
 import { ApolloProvider } from "react-apollo"
 import { client } from "./client"
 
