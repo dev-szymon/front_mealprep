@@ -3,7 +3,6 @@ import { gql } from "apollo-boost"
 import { useMutation } from "@apollo/react-hooks"
 import { useDropzone } from "react-dropzone"
 import "./IngredientCreator.css"
-import config from "../../config"
 import InputField from "./InputField"
 
 const IngredientCreator = () => {
@@ -71,9 +70,9 @@ const IngredientCreator = () => {
           values.images.map(async im => {
             const data = new FormData()
             data.append("file", im)
-            data.append("upload_preset", config.upload_preset)
+            data.append("upload_preset", process.env.GATSBY_UPLOAD_PRESET)
             const res = await fetch(
-              "https://api.cloudinary.com/v1_1/dq104qc4m/image/upload",
+              `https://api.cloudinary.com/v1_1/${process.env.GATSBY_CLOUD_NAME}/image/upload`,
               {
                 method: "POST",
                 body: data,
