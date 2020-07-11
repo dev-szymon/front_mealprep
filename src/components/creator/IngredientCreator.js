@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/react-hooks"
 import { useDropzone } from "react-dropzone"
 import "./IngredientCreator.css"
 import InputField from "./InputField"
+import { getAccessToken } from "../../auth"
 
 const IngredientCreator = () => {
   const [values, setValues] = useState({ images: [], tips: [] })
@@ -41,7 +42,7 @@ const IngredientCreator = () => {
     onCompleted: data => console.log(data),
     context: {
       headers: {
-        authorization: "",
+        authorization: getAccessToken(),
       },
     },
   })

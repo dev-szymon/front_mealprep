@@ -3,6 +3,7 @@ import { gql } from "apollo-boost"
 import { useMutation } from "@apollo/react-hooks"
 import { useDropzone } from "react-dropzone"
 import "./IngredientCreator.css"
+import { getAccessToken } from "../../auth"
 import InputField from "./InputField"
 
 const IngredientCreator = () => {
@@ -51,7 +52,7 @@ const IngredientCreator = () => {
     onCompleted: data => console.log(data),
     context: {
       headers: {
-        authorization: "",
+        authorization: getAccessToken(),
       },
     },
   })

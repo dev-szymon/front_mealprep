@@ -1,11 +1,22 @@
 import React from "react"
+import "./SecondaryNav.css"
 
-const SecondaryNav = ({ setPrimaryView, primary, secondary }) => {
+const SecondaryNav = ({ primaryView, setPrimaryView, primary, secondary }) => {
   return (
-    <nav>
+    <nav className="secondary-nav">
       <ul>
-        <li onClick={() => setPrimaryView(true)}>{primary}</li>
-        <li onClick={() => setPrimaryView(false)}>{secondary}</li>
+        <li
+          onClick={() => setPrimaryView(true)}
+          className={primaryView ? "active" : null}
+        >
+          {primary}
+        </li>
+        <li
+          onClick={() => setPrimaryView(false)}
+          className={!primaryView ? "active" : null}
+        >
+          {secondary}
+        </li>
       </ul>
     </nav>
   )

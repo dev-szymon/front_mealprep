@@ -1,0 +1,26 @@
+.secondary-nav {
+  width: 100%;
+  background: #fff;
+  height: 48px;
+}
+
+.secondary-nav ul {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.secondary-nav ul li {
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100%;
+}
+
+.active {
+  font-weight: bold;
+}

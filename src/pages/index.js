@@ -13,6 +13,7 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Home" />
       <SecondaryNav
+        primaryView={primaryView}
         setPrimaryView={setPrimaryView}
         primary="Rejestracja"
         secondary="Logowanie"

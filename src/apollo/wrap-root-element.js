@@ -1,7 +1,13 @@
 import React from "react"
-import { ApolloProvider } from "react-apollo"
+import { ApolloProvider } from "@apollo/react-hooks"
 import { client } from "./client"
+import RefreshToken from "../auth/RefreshToken"
 
-export const wrapRootElement = ({ element }) => (
-  <ApolloProvider client={client}>{element}</ApolloProvider>
-)
+export const wrapRootElement = ({ element }) => {
+  return (
+    <ApolloProvider client={client}>
+      <RefreshToken />
+      {element}
+    </ApolloProvider>
+  )
+}

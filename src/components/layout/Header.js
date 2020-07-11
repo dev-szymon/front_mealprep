@@ -14,7 +14,13 @@ const Header = ({ siteTitle }) => (
       borderBottom: "2px solid rgba(0,0,0,0.55)",
     }}
   >
-    <h1 style={{ width: "fit-content", fontFamily: "Montserrat, sans-serif" }}>
+    <h1
+      style={{
+        width: "fit-content",
+        fontSize: "25px",
+        fontFamily: "Montserrat, sans-serif",
+      }}
+    >
       <Link
         to="/"
         style={{
