@@ -5,17 +5,11 @@ const SecondaryNav = ({ primaryView, setPrimaryView, primary, secondary }) => {
   return (
     <nav className="secondary-nav">
       <ul>
-        <li
-          onClick={() => setPrimaryView(true)}
-          className={primaryView ? "active" : null}
-        >
-          {primary}
+        <li onClick={() => setPrimaryView(true)}>
+          <span className={primaryView ? "active" : null}>{primary}</span>
         </li>
-        <li
-          onClick={() => setPrimaryView(false)}
-          className={!primaryView ? "active" : null}
-        >
-          {secondary}
+        <li onClick={() => setPrimaryView(false)}>
+          <span className={!primaryView ? "active" : null}>{secondary}</span>
         </li>
       </ul>
     </nav>

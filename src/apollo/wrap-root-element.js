@@ -6,8 +6,7 @@ import RefreshToken from "../auth/RefreshToken"
 export const wrapRootElement = ({ element }) => {
   return (
     <ApolloProvider client={client}>
-      <RefreshToken />
-      {element}
+      <RefreshToken>{element}</RefreshToken>
     </ApolloProvider>
   )
 }

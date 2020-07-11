@@ -1,6 +1,10 @@
 .secondary-nav {
   width: 100%;
   background: #fff;
+  color: rgba(0, 0, 0, 0.4);
+  font-style: normal;
+  font-weight: normal;
+  line-height: 20px;
   height: 48px;
 }
 
@@ -22,5 +26,17 @@
 }
 
 .active {
-  font-weight: bold;
+  color: rgba(0, 0, 0);
+  position: relative;
+}
+
+.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border-bottom: solid 3px black;
+  z-index: 100;
 }

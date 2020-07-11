@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { setAccessToken } from "../auth"
 import Loading from "../components/Loading"
 
-const RefreshToken = () => {
+const RefreshToken = ({ children }) => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const RefreshToken = () => {
     return <Loading />
   }
 
-  return null
+  return children
 }
 
 export default RefreshToken
