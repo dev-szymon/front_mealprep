@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import Layout from "../components/layout/layout"
+import Layout from "../components/layout/Layout"
 import SEO from "../components/seo"
 import LoginForm from "../components/LoginForm"
 import RegisterForm from "../components/RegisterForm"
@@ -9,8 +9,7 @@ const IndexPage = () => {
   const [primaryView, setPrimaryView] = useState(true)
 
   return (
-    <>
-      <Header />
+    <Layout>
       <SEO title="Home" />
       <SecondaryNav
         primaryView={primaryView}
@@ -19,7 +18,7 @@ const IndexPage = () => {
         secondary="Logowanie"
       />
       {primaryView ? <RegisterForm /> : <LoginForm />}
-    </>
+    </Layout>
   )
 }
 

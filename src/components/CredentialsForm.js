@@ -48,7 +48,14 @@ const CredentialsForm = ({ form, action }) => {
           {form === "register" ? "Zarejestruj się" : "Zaloguj"}
           <div></div>
         </button>
-        <button type="button">Więcej</button>
+        <button id="more-button" type="button">
+          Więcej
+          <div className="buttons-dot__container">
+            <div className="buttons-dot"></div>
+            <div className="buttons-dot"></div>
+            <div className="buttons-dot"></div>
+          </div>
+        </button>
       </div>
     </form>
   )
