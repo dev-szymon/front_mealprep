@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
-
+body {
+  --green: #15c96e;
+  --faded-black: rgba(0, 0, 0, 0.4);
+  --yellow: #f7991f;
+}
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 /* Document

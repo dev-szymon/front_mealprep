@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import "./CredentialsForm.css"
 
 const CredentialsForm = ({ form, action }) => {
   const [values, setValues] = useState()
@@ -12,6 +13,7 @@ const CredentialsForm = ({ form, action }) => {
 
   return (
     <form
+      className="credentials-form"
       onSubmit={event => {
         event.preventDefault()
         try {
@@ -23,21 +25,31 @@ const CredentialsForm = ({ form, action }) => {
     >
       {form === "register" ? (
         <div>
-          <label htmlFor="username">nazwa użytkownika</label>
+          {values?.username?.length > 0 ? null : (
+            <label htmlFor="username">nazwa użytkownika</label>
+          )}
           <input type="username" name="username" onChange={handleChange} />
         </div>
       ) : null}
       <div>
-        <label htmlFor="email">email</label>
+        {values?.email?.length > 0 ? null : (
+          <label htmlFor="email">email</label>
+        )}
         <input type="email" name="email" onChange={handleChange} />
       </div>
       <div>
-        <label htmlFor="password">hasło</label>
+        {values?.password?.length > 0 ? null : (
+          <label htmlFor="password">hasło</label>
+        )}
         <input type="password" name="password" onChange={handleChange} />
       </div>
-      <button type="submit">
-        {form === "register" ? "Zarejestruj się" : "Zaloguj"}
-      </button>
+      <div className="credentials-form__buttons">
+        <button id="submit-button" type="submit">
+          {form === "register" ? "Zarejestruj się" : "Zaloguj"}
+          <div></div>
+        </button>
+        <button type="button">Więcej</button>
+      </div>
     </form>
   )
 }
