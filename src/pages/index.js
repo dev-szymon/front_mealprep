@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import Layout from "../components/layout/Layout"
+import Layout from "../components/layout/layout"
 import SEO from "../components/seo"
 import LoginForm from "../components/LoginForm"
 import RegisterForm from "../components/RegisterForm"
