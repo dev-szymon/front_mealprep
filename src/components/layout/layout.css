@@ -11,4 +11,12 @@
 .layout_container main {
   height: 100%;
   overflow: scroll;
+
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.layout_container main::-webkit-scrollbar {
+  display: none;
 }
