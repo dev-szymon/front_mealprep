@@ -1,10 +1,10 @@
 import React, { useState } from "react"
-import Layout from "../../components/layout/layout"
-import IngredientCreator from "../../components/creator/IngredientCreator"
-import RecipeCreator from "../../components/creator/RecipeCreator"
-import SecondaryNav from "../../components/SecondaryNav"
+import Layout from "../layout/layout"
+import IngredientCreator from "./IngredientCreator"
+import RecipeCreator from "./RecipeCreator"
+import SecondaryNav from "../SecondaryNav"
 
-const CreateIngredient = () => {
+const Creator = () => {
   const [primaryView, setPrimaryView] = useState(true)
   return (
     <Layout>
@@ -12,10 +12,11 @@ const CreateIngredient = () => {
         setPrimaryView={setPrimaryView}
         primary="Przepis"
         secondary="Składnik"
+        primaryView={primaryView}
       />
       {primaryView ? <RecipeCreator /> : <IngredientCreator />}
     </Layout>
   )
 }
 
-export default CreateIngredient
+export default Creator

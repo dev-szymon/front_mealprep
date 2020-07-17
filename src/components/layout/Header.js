@@ -11,7 +11,7 @@ const Header = ({ siteTitle }) => (
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
-      borderBottom: "2px solid rgba(0,0,0,0.55)",
+      borderBottom: "1px solid var(--faded-black)",
     }}
   >
     <h1

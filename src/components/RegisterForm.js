@@ -10,7 +10,7 @@ const LoginForm = () => {
       newUser(username: $username, email: $email, password: $password)
     }
   `
-  const [newUser, { data, loading, error }] = useMutation(NEW_USER, {
+  const [newUser] = useMutation(NEW_USER, {
     onCompleted: data => {
       setAccessToken(data.newUser)
     },

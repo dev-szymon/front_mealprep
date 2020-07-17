@@ -12,7 +12,7 @@ import Header from "./Header"
 import MenuBar from "./MenuBar"
 import "./layout.css"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, hideMenuBar }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -38,7 +38,7 @@ const Layout = ({ children }) => {
       <div className="layout_container">
         <Header siteTitle={data.site.siteMetadata.title} />
         <main>{children}</main>
-        <MenuBar />
+        {hideMenuBar ? null : <MenuBar />}
       </div>
     </>
   )

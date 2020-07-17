@@ -38,7 +38,7 @@ const IngredientCreator = () => {
   `
   // need to provide token via 3rd party
 
-  const [newIngredient, { loading, error }] = useMutation(NEW_INGREDIENT, {
+  const [newIngredient] = useMutation(NEW_INGREDIENT, {
     onCompleted: data => console.log(data),
     context: {
       headers: {
@@ -89,7 +89,7 @@ const IngredientCreator = () => {
           {values.images[0] ? (
             <img
               src={URL.createObjectURL(values.images[0])}
-              alt="image upload preview"
+              alt="upload preview"
             ></img>
           ) : (
             <h1>+</h1>

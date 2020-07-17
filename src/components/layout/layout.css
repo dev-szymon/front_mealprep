@@ -8,7 +8,7 @@
   flex-direction: column;
 }
 
-.layout_component main {
+.layout_container main {
   height: 100%;
   overflow: scroll;
 }

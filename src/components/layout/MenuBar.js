@@ -12,9 +12,11 @@ const MenuBar = () => (
       bottom: "0",
       display: "flex",
       alignItems: "center",
+      backgroundColor: "#fff",
       width: "80vw",
       height: "48px",
-      borderTop: "2px solid rgba(0,0,0,0.55)",
+      borderTop: "1px solid var(--faded-black)",
+      zIndex: "300",
     }}
   >
     <ul
@@ -37,7 +39,7 @@ const MenuBar = () => (
         />
       </li>
       <li>
-        <Link to="/cookbook">
+        <Link to="/app/cookbook">
           <img style={{ height: "24px" }} src={Book} alt="navigation book" />
         </Link>
       </li>
