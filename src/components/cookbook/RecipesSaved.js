@@ -34,7 +34,6 @@ const RecipesSaved = () => {
   if (data) {
     return (
       <>
-        <h1> Recipes Created</h1>
         {data.me.recipesSaved.map(r => (
           <RecipeCard recipe={r} />
         ))}

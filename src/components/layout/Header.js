@@ -7,6 +7,7 @@ const Header = ({ siteTitle }) => (
   <header
     style={{
       width: "100%",
+      minHeight: "48px",
       height: "48px",
       display: "flex",
       alignItems: "center",

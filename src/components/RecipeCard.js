@@ -6,13 +6,16 @@ const RecipeCard = ({ recipe }) => {
     <article className="recipe-card">
       <div className="recipe-card__top">
         <h3>{`@${recipe.createdBy.username}`}</h3>
-        <div className="recipe-card__menu"></div>
+        <div className="recipe-card__menu">
+          <span className="menu-dot"></span>
+          <span className="menu-dot"></span>
+        </div>
       </div>
       <h2 className="recipe-card__title">{recipe.name}</h2>
       <div className="img-placeholder"></div>
       <div className="recipe-card__bottom">
         <span>{`${recipe.kcal}kcal`}</span>
-        <div>
+        <div className="reach-icons">
           <div>
             ll<span>{recipe.likesNumber}</span>
           </div>

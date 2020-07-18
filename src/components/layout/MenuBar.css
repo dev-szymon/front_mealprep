@@ -1,0 +1,40 @@
+.menu-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  min-height: 48px;
+  height: 48px;
+  width: 100%;
+  border-top: 1px solid var(--faded-black);
+  z-index: 300;
+}
+
+.menu-bar ul {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.outside-click {
+  position: absolute;
+  top: 0;
+  left: 0;
+  filter: blur(25px);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 150;
+}
+.menu-bar__popup {
+  position: absolute;
+  background-color: #fff;
+  width: 100%;
+  bottom: -48px;
+  z-index: 200;
+}
+
+.menu-bar__popup.open {
+  position: absolute;
+  bottom: 0px;
+}

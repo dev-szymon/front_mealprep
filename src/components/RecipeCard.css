@@ -47,3 +47,40 @@
   display: flex;
   align-items: flex-end;
 }
+
+.recipe-card__menu {
+  width: 24px;
+  position: relative;
+  height: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.menu-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--faded-black);
+}
+
+.menu-dot::after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  background-color: var(--faded-black);
+  bottom: 0;
+}
+
+.reach-icons {
+  display: flex;
+  width: 48px;
+  justify-content: space-between;
+}
+
+.reach-icons div {
+  display: flex;
+  flex-direction: column;
+}
