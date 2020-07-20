@@ -35,7 +35,7 @@ const RecipesSaved = () => {
     return (
       <>
         {data.me.recipesSaved.map(r => (
-          <RecipeCard recipe={r} />
+          <RecipeCard key={r.id} recipe={r} />
         ))}
       </>
     )

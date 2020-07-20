@@ -18,9 +18,9 @@
 
 .outside-click {
   position: absolute;
-  top: 0;
+  top: 0vh;
   left: 0;
-  filter: blur(25px);
+  background-color: rgba(0, 0, 0, 0);
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -28,13 +28,28 @@
 }
 .menu-bar__popup {
   position: absolute;
+  font-weight: 600;
   background-color: #fff;
-  width: 100%;
-  bottom: -48px;
+  box-shadow: 0 6px 30px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 20px 20px 0 0;
+  width: 80vw;
+  bottom: 0;
+  transform: translateY(-48px);
   z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  transition: transform 0.3s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+.menu-bar__popup li {
+  padding: 10px 20px;
+  cursor: pointer;
 }
 
 .menu-bar__popup.open {
   position: absolute;
-  bottom: 0px;
+  transform: translateY(48px);
+  /* bottom: 48px; */
+  height: fit-content;
+  transition: transform 0.3s ease-in-out, box-shadow 0.5s ease-in-out;
 }

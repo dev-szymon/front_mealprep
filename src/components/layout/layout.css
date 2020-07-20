@@ -1,4 +1,4 @@
-.layout_container {
+.layout-container {
   height: 100vh; /* Fallback for browsers that do not support Custom Properties */
   height: calc(var(--vh, 1vh) * 100);
   overflow: hidden;
@@ -9,15 +9,16 @@
   justify-content: space-between;
 }
 
-.layout_container main {
+.layout-container main {
   height: 100%;
+  align-self: center;
   overflow: scroll;
-
+  width: 100%;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-.layout_container main::-webkit-scrollbar {
+.layout-container main::-webkit-scrollbar {
   display: none;
 }

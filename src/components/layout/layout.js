@@ -35,7 +35,7 @@ const Layout = ({ children, hideMenuBar }) => {
 
   return (
     <>
-      <div className="layout_container">
+      <div className="layout-container">
         <Header siteTitle={data.site.siteMetadata.title} />
         <main>{children}</main>
         {hideMenuBar ? null : <MenuBar />}
