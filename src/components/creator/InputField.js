@@ -1,8 +1,8 @@
 import React from "react"
 
-const InputField = ({ type, inputFor, onChange, text }) => {
+const InputField = ({ type, inputFor, onChange, text, className, onClick }) => {
   return (
-    <div>
+    <div className={className}>
       <label htmlFor={inputFor}>{text}</label>
       {type === "textarea" ? (
         <textarea name={inputFor} onChange={onChange}></textarea>

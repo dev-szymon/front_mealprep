@@ -33,7 +33,7 @@
 }
 .menu-bar__popup {
   position: absolute;
-  font-weight: 600;
+  font-weight: 400;
   background-color: #fff;
   box-shadow: 0 -30px 30px -30px rgba(0, 0, 0, 0.25);
   border-radius: 20px 20px 0 0;

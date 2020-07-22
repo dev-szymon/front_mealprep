@@ -78,6 +78,7 @@ const IngredientCreator = () => {
       }}
     >
       <InputField
+        className="ingredient-input"
         type="text"
         inputFor="name"
         text="nazwa produktu"
@@ -98,36 +99,40 @@ const IngredientCreator = () => {
         </div>
       </div>
       <InputField
+        className="ingredient-input"
         type="number"
         inputFor="kcal"
         text="kcal"
         onChange={handleChange}
       />
       <InputField
+        className="ingredient-input"
         type="number"
         inputFor="protein"
         text="białko"
         onChange={handleChange}
       />
       <InputField
+        className="ingredient-input"
         type="number"
         inputFor="fats"
         text="tłuszcze"
         onChange={handleChange}
       />
       <InputField
+        className="ingredient-input"
         type="number"
         inputFor="carbs"
         text="węglowodany"
         onChange={handleChange}
       />
       <InputField
+        className="ingredient-input"
         type="number"
         inputFor="glycemicIndex"
         text="indeks glikemiczny"
         onChange={handleChange}
       />
-
       <button type="submit">Stwórz</button>
     </form>
   )

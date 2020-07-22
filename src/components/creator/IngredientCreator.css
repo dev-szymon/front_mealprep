@@ -29,5 +29,41 @@
 }
 
 .input-form {
-  flex: auto;
+  font-family: Montserrat, sans-serif;
+  color: var(--faded-black);
+}
+
+.ingredient-input {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  border-bottom: 1px solid var(--faded-black);
+}
+
+.ingredient-input input {
+  border: none;
+  outline: none;
+  width: 48px;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ingredient-input textarea {
+  border: none;
+  outline: none;
+  border-left: 1px solid var(--faded-black);
+  min-height: 220px;
+}
+
+.input-form button {
+  background-color: var(--green);
+  outline: none;
+  border: none;
+  color: white;
+  float: right;
+  width: 72px;
+  height: 32px;
+  border-radius: 10px;
 }
