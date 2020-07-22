@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 import Home from "../../images/home.svg"
 import Calendar from "../../images/calendar.svg"
 import Book from "../../images/book.svg"
@@ -16,7 +16,18 @@ const MenuBar = () => {
       ) : null}
       <nav className={`menu-bar__popup ${isOpen ? "open" : null}`}>
         <ul>
-          <li onClick={() => setAccessToken("")}>Wyloguj</li>
+          <li>Profil</li>
+          <li>Ustawienia</li>
+          <li>Statystyki</li>
+          <li>Blog</li>
+          <li
+            onClick={() => {
+              setAccessToken("")
+              navigate("/app/auth")
+            }}
+          >
+            Wyloguj
+          </li>
         </ul>
       </nav>
       <nav className="menu-bar">

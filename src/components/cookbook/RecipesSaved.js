@@ -27,6 +27,9 @@ const RecipesSaved = () => {
   `
   const { data, loading, error } = useQuery(RECIPES_SAVED_QUERY)
 
+  if (error) {
+    console.log(error)
+  }
   if (loading) {
     return <Loading />
   }

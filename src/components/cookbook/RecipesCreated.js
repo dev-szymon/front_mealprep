@@ -26,6 +26,10 @@ const RecipesCreated = () => {
   `
   const { data, loading, error } = useQuery(RECIPES_CREATED_QUERY)
 
+  if (error) {
+    console.log(error)
+  }
+
   if (loading) {
     return <Loading />
   }

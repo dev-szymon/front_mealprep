@@ -1,7 +1,7 @@
 .add-button {
   position: absolute;
   bottom: 54px;
-  right: 16px;
+  right: 10vw;
   cursor: pointer;
   border-radius: 50%;
   border: none;
