@@ -58,6 +58,12 @@ const MenuBar = () => {
             </Link>
           </li>
           <li
+            style={{
+              width: "24px",
+              maxHeight: "24px",
+              display: "flex",
+              justifyContent: "center",
+            }}
             onClick={() => {
               setIsOpen(!isOpen)
             }}
