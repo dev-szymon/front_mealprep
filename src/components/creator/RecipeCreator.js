@@ -40,7 +40,7 @@ const IngredientCreator = () => {
   }
 
   const NEW_RECIPE = gql`
-    mutation newIngredient($recipe: recipeInput!) {
+    mutation newRecipe($recipe: recipeInput!) {
       newRecipe(recipe: $recipe) {
         id
       }
@@ -63,7 +63,6 @@ const IngredientCreator = () => {
       onSubmit={event => {
         event.preventDefault()
         try {
-          console.log(values)
           let imagesUploaded = []
 
           // body must be in formdata format not in json
@@ -113,7 +112,7 @@ const IngredientCreator = () => {
           <input type="file" {...getInputProps()} multiple={true} />
         </div>
         <div className="img-input" {...getRootProps()}>
-          {values.images[0] ? (
+          {values.images[1] ? (
             <img
               src={URL.createObjectURL(values.images[1])}
               alt="upload preview"
@@ -124,7 +123,7 @@ const IngredientCreator = () => {
           <input type="file" {...getInputProps()} multiple={true} />
         </div>
         <div className="img-input" {...getRootProps()}>
-          {values.images[0] ? (
+          {values.images[2] ? (
             <img
               src={URL.createObjectURL(values.images[2])}
               alt="upload preview"
@@ -142,6 +141,7 @@ const IngredientCreator = () => {
         onChange={handleChange}
       />
       <InputField
+        className="recipe-input"
         type="textarea"
         inputFor="description"
         text="przygotowanie"

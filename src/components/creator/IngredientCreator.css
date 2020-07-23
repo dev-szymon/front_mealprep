@@ -50,7 +50,7 @@
   align-items: center;
 }
 
-.ingredient-input textarea {
+.recipe-input textarea {
   border: none;
   outline: none;
   border-left: 1px solid var(--faded-black);

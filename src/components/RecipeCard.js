@@ -1,5 +1,6 @@
 import React from "react"
 import "./RecipeCard.css"
+import { Link } from "gatsby"
 
 const RecipeCard = ({ recipe }) => {
   return (
@@ -11,8 +12,10 @@ const RecipeCard = ({ recipe }) => {
           <span className="menu-dot"></span>
         </div>
       </div>
-      <h2 className="recipe-card__title">{recipe.name}</h2>
-      <div className="img-placeholder"></div>
+      <Link to={`/app/recipes/${recipe.id}`}>
+        <h2 className="recipe-card__title">{recipe.name}</h2>
+        <div className="img-placeholder"></div>
+      </Link>
       <div className="recipe-card__bottom">
         <span>{`${recipe.kcal}kcal`}</span>
         <div className="reach-icons">
