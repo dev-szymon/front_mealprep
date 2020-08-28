@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { gql } from "apollo-boost"
 import { useMutation } from "@apollo/react-hooks"
 import { useDropzone } from "react-dropzone"
-import "./IngredientCreator.css"
+import "./RecipeCreator.css"
 import { getAccessToken } from "../../auth"
 import InputField from "./InputField"
 
@@ -46,7 +46,6 @@ const IngredientCreator = () => {
       }
     }
   `
-  // need to provide token via 3rd party
 
   const [newRecipe] = useMutation(NEW_RECIPE, {
     onCompleted: data => console.log(data),
@@ -93,6 +92,7 @@ const IngredientCreator = () => {
       }}
     >
       <InputField
+        className="field-group text-field"
         type="text"
         inputFor="name"
         text="nazwa przepisu"
@@ -135,13 +135,14 @@ const IngredientCreator = () => {
         </div>
       </div>
       <InputField
+        className="field-group vertical checkbox"
         type="checkbox"
         inputFor="public"
         text="publiczny"
         onChange={handleChange}
       />
       <InputField
-        className="recipe-input"
+        className="field-group recipe-input"
         type="textarea"
         inputFor="description"
         text="przygotowanie"

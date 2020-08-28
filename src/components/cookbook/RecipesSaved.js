@@ -34,7 +34,9 @@ const RecipesSaved = () => {
     return <Loading />
   }
 
-  if (data) {
+  if (data && data.me.recipesSaved.length < 1) {
+    return <p>browse recipes</p>
+  } else {
     return (
       <>
         {data.me.recipesSaved.map(r => (

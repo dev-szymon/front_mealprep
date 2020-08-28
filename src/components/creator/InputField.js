@@ -7,7 +7,13 @@ const InputField = ({ type, inputFor, onChange, text, className, onClick }) => {
       {type === "textarea" ? (
         <textarea name={inputFor} onChange={onChange}></textarea>
       ) : (
-        <input type={type} name={inputFor} onChange={onChange} />
+        <input
+          type={type}
+          name={inputFor}
+          onChange={onChange}
+          min="0"
+          step="0.01"
+        />
       )}
     </div>
   )

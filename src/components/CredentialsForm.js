@@ -24,20 +24,20 @@ const CredentialsForm = ({ form, action }) => {
       }}
     >
       {form === "register" ? (
-        <div>
+        <div className="field-group">
           {values?.username?.length > 0 ? null : (
             <label htmlFor="username">nazwa użytkownika</label>
           )}
           <input type="username" name="username" onChange={handleChange} />
         </div>
       ) : null}
-      <div>
+      <div className="field-group">
         {values?.email?.length > 0 ? null : (
           <label htmlFor="email">email</label>
         )}
         <input type="email" name="email" onChange={handleChange} />
       </div>
-      <div>
+      <div className="field-group">
         {values?.password?.length > 0 ? null : (
           <label htmlFor="password">hasło</label>
         )}

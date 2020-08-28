@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import { gql } from "apollo-boost"
 import { useMutation } from "@apollo/react-hooks"
 import { useDropzone } from "react-dropzone"
-import "./IngredientCreator.css"
 import InputField from "./InputField"
 import { getAccessToken } from "../../auth"
 
@@ -36,7 +35,6 @@ const IngredientCreator = () => {
       }
     }
   `
-  // need to provide token via 3rd party
 
   const [newIngredient] = useMutation(NEW_INGREDIENT, {
     onCompleted: data => console.log(data),
@@ -99,35 +97,35 @@ const IngredientCreator = () => {
         </div>
       </div>
       <InputField
-        className="ingredient-input"
+        className="ingredient-input number"
         type="number"
         inputFor="kcal"
         text="kcal"
         onChange={handleChange}
       />
       <InputField
-        className="ingredient-input"
+        className="ingredient-input number"
         type="number"
         inputFor="protein"
         text="białko"
         onChange={handleChange}
       />
       <InputField
-        className="ingredient-input"
+        className="ingredient-input number"
         type="number"
         inputFor="fats"
         text="tłuszcze"
         onChange={handleChange}
       />
       <InputField
-        className="ingredient-input"
+        className="ingredient-input number"
         type="number"
         inputFor="carbs"
         text="węglowodany"
         onChange={handleChange}
       />
       <InputField
-        className="ingredient-input"
+        className="ingredient-input number"
         type="number"
         inputFor="glycemicIndex"
         text="indeks glikemiczny"

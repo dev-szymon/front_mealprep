@@ -1,7 +1,7 @@
 .add-button {
   position: absolute;
   bottom: 54px;
-  right: 10vw;
+  right: 11vw;
   cursor: pointer;
   border-radius: 50%;
   border: none;
@@ -11,6 +11,7 @@
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
+  box-shadow: 0 6px 10px 2px rgba(0, 0, 0, 0.4);
 }
 
 .add-bar {

@@ -8,8 +8,6 @@ const RecipesCreated = () => {
   const RECIPES_CREATED_QUERY = gql`
     {
       me {
-        id
-        username
         recipesCreated {
           id
           name

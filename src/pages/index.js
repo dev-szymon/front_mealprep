@@ -3,8 +3,9 @@ import Layout from "../components/layout/layout"
 import SEO from "../components/seo"
 import { getAccessToken } from "../auth"
 import { gql } from "apollo-boost"
+import { Link } from "gatsby"
 import { useQuery } from "@apollo/react-hooks"
-import Loading from "../components/Loading"
+import LandingPage from "../components/LandingPage"
 
 const IndexPage = () => {
   const ME_QUERY = gql`
@@ -15,18 +16,19 @@ const IndexPage = () => {
     }
   `
   const { data, loading, error } = useQuery(ME_QUERY)
-  if (loading) {
-    return <Loading />
-  }
 
   return (
     <Layout>
       <SEO title="Home" />
-      <h1>
-        {getAccessToken() === ""
-          ? "Dzień Dobry!"
-          : `Dzień dobry, ${data.me.username}`}
-      </h1>
+      {getAccessToken() === "" ? (
+        <div className="landing-container">
+          <button className="action-button">
+            <Link to="/app/auth">Zaloguj się</Link>
+          </button>
+        </div>
+      ) : (
+        <LandingPage loading={loading} data={data} />
+      )}
     </Layout>
   )
 }

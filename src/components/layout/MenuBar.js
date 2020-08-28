@@ -31,50 +31,42 @@ const MenuBar = () => {
         </ul>
       </nav>
       <nav className="menu-bar">
-        <ul>
-          <li>
-            <Link to="/">
-              <img
-                style={{ height: "24px" }}
-                src={Home}
-                alt="navigation home"
-              />
-            </Link>
-          </li>
-          <li>
-            <img
-              style={{ height: "24px" }}
-              src={Calendar}
-              alt="navigation calendar"
-            />
-          </li>
-          <li>
-            <Link to="/app/cookbook">
-              <img
-                style={{ height: "24px" }}
-                src={Book}
-                alt="navigation book"
-              />
-            </Link>
-          </li>
-          <li
-            style={{
-              width: "24px",
-              maxHeight: "24px",
-              display: "flex",
-              justifyContent: "center",
-            }}
-            onClick={() => {
-              setIsOpen(!isOpen)
-            }}
-          >
-            <img
-              style={{ height: "24px" }}
-              src={Dots}
-              alt="navigation more options"
-            />
-          </li>
-        </ul>
+        <button>
+          <Link to="/">
+            <img style={{ height: "24px" }} src={Home} alt="navigation home" />
+          </Link>
+        </button>
+        <button>
+          <img
+            style={{ height: "24px" }}
+            src={Calendar}
+            alt="navigation calendar"
+          />
+        </button>
+
+        <button>
+          <Link to="/app/cookbook">
+            <img style={{ height: "24px" }} src={Book} alt="navigation book" />
+          </Link>
+        </button>
+        <button
+          style={{
+            width: "24px",
+            maxHeight: "24px",
+            display: "flex",
+            justifyContent: "center",
+            outline: "none",
+          }}
+          onClick={() => {
+            setIsOpen(!isOpen)
+          }}
+        >
+          <img
+            style={{ height: "24px" }}
+            src={Dots}
+            alt="navigation more options"
+          />
+        </button>
       </nav>
     </>
   )

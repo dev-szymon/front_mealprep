@@ -23,3 +23,18 @@
 .layout-container main::-webkit-scrollbar {
   display: none;
 }
+
+.action-button {
+  background-color: var(--green);
+  border: none;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.landing-container {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
