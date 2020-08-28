@@ -49,6 +49,7 @@
 .input-form input,
 .input-form textarea {
   -webkit-appearance: none;
+  -webkit-tap-highlight-color: var(--green);
   border: 1px solid var(--faded-black);
   border-radius: 5px;
   width: 100%;
