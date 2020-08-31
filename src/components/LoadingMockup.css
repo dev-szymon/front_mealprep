@@ -1,10 +1,6 @@
 .loader-mockup {
   width: 80vw;
   margin: 2rem auto;
-}
-
-.loader-mockup {
-  width: 100%;
   max-width: 400px;
   height: 416px;
   border-bottom: 1px solid var(--faded-black);
