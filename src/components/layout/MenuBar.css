@@ -34,7 +34,7 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  z-index: 150;
+  z-index: 250;
   transition: all 0.6s ease-in-out;
 }
 .menu-bar__popup {

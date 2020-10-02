@@ -31,6 +31,7 @@
 .input-form {
   font-family: Montserrat, sans-serif;
   color: var(--faded-black);
+  margin-top: 3rem;
   max-width: 400px;
   padding: 0.5rem;
 }
