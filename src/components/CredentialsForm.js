@@ -1,7 +1,8 @@
 import React, { useState } from "react"
 import "./CredentialsForm.css"
+import ActionButton from "./ActionButton"
 
-const CredentialsForm = ({ form, action }) => {
+const CredentialsForm = ({ form, action, buttonText }) => {
   const [values, setValues] = useState()
 
   const handleChange = event => {
@@ -43,20 +44,7 @@ const CredentialsForm = ({ form, action }) => {
         )}
         <input type="password" name="password" onChange={handleChange} />
       </div>
-      <div className="credentials-form__buttons">
-        <button id="submit-button" type="submit">
-          {form === "register" ? "Zarejestruj się" : "Zaloguj"}
-          <div></div>
-        </button>
-        <button id="more-button" type="button">
-          Więcej
-          <div className="buttons-dot__container">
-            <div className="buttons-dot"></div>
-            <div className="buttons-dot"></div>
-            <div className="buttons-dot"></div>
-          </div>
-        </button>
-      </div>
+      <ActionButton type="submit" buttonText={buttonText} />
     </form>
   )
 }

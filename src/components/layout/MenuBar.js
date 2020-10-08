@@ -5,7 +5,6 @@ import Calendar from "../../images/calendar.svg"
 import Book from "../../images/book.svg"
 import Dots from "../../images/dots.svg"
 import "./MenuBar.css"
-import { setAccessToken } from "../../auth"
 
 const MenuBar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -22,7 +21,6 @@ const MenuBar = () => {
           <li>Blog</li>
           <li
             onClick={() => {
-              setAccessToken("")
               navigate("/app/auth")
             }}
           >

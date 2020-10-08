@@ -3,8 +3,8 @@ import { gql } from "apollo-boost"
 import { useMutation } from "@apollo/react-hooks"
 import { useDropzone } from "react-dropzone"
 import "./RecipeCreator.css"
-import { getAccessToken } from "../../auth"
 import InputField from "./InputField"
+import ActionButton from "../ActionButton"
 
 const IngredientCreator = () => {
   const [values, setValues] = useState({ images: [], tips: [] })
@@ -49,11 +49,6 @@ const IngredientCreator = () => {
 
   const [newRecipe] = useMutation(NEW_RECIPE, {
     onCompleted: data => console.log(data),
-    context: {
-      headers: {
-        authorization: getAccessToken(),
-      },
-    },
   })
 
   return (
@@ -148,8 +143,7 @@ const IngredientCreator = () => {
         text="przygotowanie"
         onChange={handleChange}
       />
-
-      <button type="submit">Stwórz</button>
+      <ActionButton type="submit" buttonText="dodaj przepis" />
     </form>
   )
 }

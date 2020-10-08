@@ -11,7 +11,6 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./Header"
 import MenuBar from "./MenuBar"
 import "./layout.css"
-import { getAccessToken } from "../../auth"
 
 const Layout = ({ children, hideMenuBar }) => {
   const data = useStaticQuery(graphql`
@@ -39,7 +38,7 @@ const Layout = ({ children, hideMenuBar }) => {
       <div className="layout-container">
         <Header siteTitle={data.site.siteMetadata.title} />
         <main>{children}</main>
-        {getAccessToken() === "" ? null : <MenuBar />}
+        {hideMenuBar ? null : <MenuBar />}
       </div>
     </>
   )

@@ -2,7 +2,6 @@ import React from "react"
 import { gql } from "apollo-boost"
 import { useMutation } from "@apollo/react-hooks"
 import CredentialsForm from "./CredentialsForm"
-import { setAccessToken } from "../auth"
 
 const LoginForm = () => {
   const NEW_USER = gql`
@@ -12,11 +11,17 @@ const LoginForm = () => {
   `
   const [newUser] = useMutation(NEW_USER, {
     onCompleted: data => {
-      setAccessToken(data.newUser)
+      console.log(data)
     },
   })
 
-  return <CredentialsForm action={newUser} form={"register"} />
+  return (
+    <CredentialsForm
+      action={newUser}
+      form={"register"}
+      buttonText="załóż konto"
+    />
+  )
 }
 
 export default LoginForm
