@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import "./CredentialsForm.css"
-import ActionButton from "./ActionButton"
+import ActionButton from "../forms/ActionButton"
 
 const CredentialsForm = ({ form, action, buttonText }) => {
   const [values, setValues] = useState()

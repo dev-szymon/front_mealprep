@@ -3,7 +3,7 @@ import { gql } from "apollo-boost"
 import { useMutation } from "@apollo/react-hooks"
 import { useDropzone } from "react-dropzone"
 import InputField from "./InputField"
-import ActionButton from "../ActionButton"
+import ActionButton from "../forms/ActionButton"
 
 const IngredientCreator = () => {
   const [values, setValues] = useState({ images: [], tips: [] })

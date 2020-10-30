@@ -41,7 +41,6 @@ const MenuBar = () => {
             alt="navigation calendar"
           />
         </button>
-
         <button>
           <Link to="/app/cookbook">
             <img style={{ height: "24px" }} src={Book} alt="navigation book" />

@@ -4,7 +4,8 @@ import { useMutation } from "@apollo/react-hooks"
 import { useDropzone } from "react-dropzone"
 import "./RecipeCreator.css"
 import InputField from "./InputField"
-import ActionButton from "../ActionButton"
+import ActionButton from "../forms/ActionButton"
+import IngredientSelector from "./ingredientSelector/IngredientSelector"
 
 const IngredientCreator = () => {
   const [values, setValues] = useState({ images: [], tips: [] })
@@ -52,99 +53,102 @@ const IngredientCreator = () => {
   })
 
   return (
-    <form
-      className="input-form"
-      onSubmit={event => {
-        event.preventDefault()
-        try {
-          let imagesUploaded = []
+    <>
+      <form
+        className="input-form"
+        onSubmit={event => {
+          event.preventDefault()
+          try {
+            let imagesUploaded = []
 
-          // body must be in formdata format not in json
+            // body must be in formdata format not in json
 
-          values.images.map(async im => {
-            const data = new FormData()
-            data.append("file", im)
-            data.append("upload_preset", process.env.GATSBY_UPLOAD_PRESET)
-            const res = await fetch(
-              `https://api.cloudinary.com/v1_1/${process.env.GATSBY_CLOUD_NAME}/image/upload`,
-              {
-                method: "POST",
-                body: data,
-              }
-            )
-            const file = await res.json()
-            return imagesUploaded.push(file.secure_url)
-          })
+            values.images.map(async im => {
+              const data = new FormData()
+              data.append("file", im)
+              data.append("upload_preset", process.env.GATSBY_UPLOAD_PRESET)
+              const res = await fetch(
+                `https://api.cloudinary.com/v1_1/${process.env.GATSBY_CLOUD_NAME}/image/upload`,
+                {
+                  method: "POST",
+                  body: data,
+                }
+              )
+              const file = await res.json()
+              return imagesUploaded.push(file.secure_url)
+            })
 
-          return newRecipe({
-            variables: {
-              recipe: { ...values, images: imagesUploaded },
-            },
-          })
-        } catch (err) {
-          console.log(err)
-        }
-      }}
-    >
-      <InputField
-        className="field-group text-field"
-        type="text"
-        inputFor="name"
-        text="nazwa przepisu"
-        name="name"
-        onChange={handleChange}
-      />
-      <div className="img-input-container">
-        <div className="img-input" {...getRootProps()}>
-          {values.images[0] ? (
-            <img
-              src={URL.createObjectURL(values.images[0])}
-              alt="upload preview"
-            ></img>
-          ) : (
-            <h1>+</h1>
-          )}
-          <input type="file" {...getInputProps()} multiple={true} />
+            return newRecipe({
+              variables: {
+                recipe: { ...values, images: imagesUploaded },
+              },
+            })
+          } catch (err) {
+            console.log(err)
+          }
+        }}
+      >
+        <InputField
+          className="field-group text-field"
+          type="text"
+          inputFor="name"
+          text="nazwa przepisu"
+          name="name"
+          onChange={handleChange}
+        />
+        <div className="img-input-container">
+          <div className="img-input" {...getRootProps()}>
+            {values.images[0] ? (
+              <img
+                src={URL.createObjectURL(values.images[0])}
+                alt="upload preview"
+              ></img>
+            ) : (
+              <h1>+</h1>
+            )}
+            <input type="file" {...getInputProps()} multiple={true} />
+          </div>
+          <div className="img-input" {...getRootProps()}>
+            {values.images[1] ? (
+              <img
+                src={URL.createObjectURL(values.images[1])}
+                alt="upload preview"
+              ></img>
+            ) : (
+              <h1>+</h1>
+            )}
+            <input type="file" {...getInputProps()} multiple={true} />
+          </div>
+          <div className="img-input" {...getRootProps()}>
+            {values.images[2] ? (
+              <img
+                src={URL.createObjectURL(values.images[2])}
+                alt="upload preview"
+              ></img>
+            ) : (
+              <h1>+</h1>
+            )}
+            <input type="file" {...getInputProps()} multiple={true} />
+          </div>
         </div>
-        <div className="img-input" {...getRootProps()}>
-          {values.images[1] ? (
-            <img
-              src={URL.createObjectURL(values.images[1])}
-              alt="upload preview"
-            ></img>
-          ) : (
-            <h1>+</h1>
-          )}
-          <input type="file" {...getInputProps()} multiple={true} />
-        </div>
-        <div className="img-input" {...getRootProps()}>
-          {values.images[2] ? (
-            <img
-              src={URL.createObjectURL(values.images[2])}
-              alt="upload preview"
-            ></img>
-          ) : (
-            <h1>+</h1>
-          )}
-          <input type="file" {...getInputProps()} multiple={true} />
-        </div>
-      </div>
-      <InputField
-        className="field-group vertical checkbox"
-        type="checkbox"
-        inputFor="public"
-        text="publiczny"
-        onChange={handleChange}
-      />
-      <InputField
-        className="field-group recipe-input"
-        type="textarea"
-        inputFor="description"
-        text="przygotowanie"
-        onChange={handleChange}
-      />
-      <ActionButton type="submit" buttonText="dodaj przepis" />
-    </form>
+        <IngredientSelector />
+        <InputField
+          className="field-group vertical checkbox"
+          type="checkbox"
+          inputFor="public"
+          text="publiczny"
+          onChange={handleChange}
+        />
+        <InputField
+          className="field-group recipe-input"
+          type="textarea"
+          inputFor="description"
+          text="przygotowanie"
+          onChange={handleChange}
+        />
+        <ActionButton type="submit" buttonText="dodaj przepis" />
+      </form>
+    </>
   )
 }
 

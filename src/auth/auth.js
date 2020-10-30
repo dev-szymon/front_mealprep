@@ -1,8 +1,9 @@
 import React, { useState } from "react"
 import Layout from "../components/layout/layout"
-import LoginForm from "../components/LoginForm"
-import RegisterForm from "../components/RegisterForm"
+// import LoginForm from "../components/credentialsForm/LoginForm"
+import RegisterForm from "../components/credentialsForm/RegisterForm"
 import SecondaryNav from "../components/SecondaryNav"
+import LoginFormik from "../components/forms/LoginFormik"
 
 const Authorization = () => {
   const [primaryView, setPrimaryView] = useState(true)
@@ -15,7 +16,13 @@ const Authorization = () => {
         primary="Rejestracja"
         secondary="Logowanie"
       />
-      {primaryView ? <RegisterForm /> : <LoginForm />}
+      {primaryView ? (
+        <RegisterForm />
+      ) : (
+        <div className="landing-container">
+          <LoginFormik />
+        </div>
+      )}
     </Layout>
   )
 }

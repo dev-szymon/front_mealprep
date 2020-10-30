@@ -27,7 +27,6 @@ const Layout = ({ children, hideMenuBar }) => {
     let vh = window.innerHeight * 0.01
     document.documentElement.style.setProperty("--vh", `${vh}px`)
     window.addEventListener("resize", () => {
-      // We execute the same script as before
       let vh = window.innerHeight * 0.01
       document.documentElement.style.setProperty("--vh", `${vh}px`)
     })
@@ -37,7 +36,7 @@ const Layout = ({ children, hideMenuBar }) => {
     <>
       <div className="layout-container">
         <Header siteTitle={data.site.siteMetadata.title} />
-        <main>{children}</main>
+        <main className="main-element">{children}</main>
         {hideMenuBar ? null : <MenuBar />}
       </div>
     </>

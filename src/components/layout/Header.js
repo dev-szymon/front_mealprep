@@ -13,6 +13,7 @@ const Header = ({ siteTitle }) => (
       alignItems: "center",
       justifyContent: "space-between",
       borderBottom: "1px solid var(--faded-black)",
+      padding: "0 10%",
     }}
   >
     <h1

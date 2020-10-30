@@ -1,7 +1,7 @@
 .secondary-nav {
   position: fixed;
   top: var(--header-height);
-  width: 80vw;
+  width: 100%;
   background: #fff;
   color: rgba(0, 0, 0, 0.4);
   font-style: normal;

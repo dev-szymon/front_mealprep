@@ -2,7 +2,7 @@ import React from "react"
 import { gql } from "apollo-boost"
 import { useQuery } from "@apollo/react-hooks"
 import Loading from "../Loading"
-import RecipeCard from "../RecipeCard"
+import RecipeCard from "./RecipeCard"
 
 // abstract component, passing only query
 const RecipesSaved = () => {
@@ -29,6 +29,7 @@ const RecipesSaved = () => {
 
   if (error) {
     console.log(error)
+    return <p>please log in</p>
   }
   if (loading) {
     return <Loading />

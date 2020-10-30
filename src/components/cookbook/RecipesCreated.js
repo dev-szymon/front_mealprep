@@ -2,7 +2,7 @@ import React from "react"
 import { gql } from "apollo-boost"
 import { useQuery } from "@apollo/react-hooks"
 import Loading from "../Loading"
-import RecipeCard from "../RecipeCard"
+import RecipeCard from "./RecipeCard"
 
 const RecipesCreated = () => {
   const RECIPES_CREATED_QUERY = gql`
@@ -26,6 +26,7 @@ const RecipesCreated = () => {
 
   if (error) {
     console.log(error)
+    return <p style={{marginTop: '4rem'}}>please log in</p>
   }
 
   if (loading) {

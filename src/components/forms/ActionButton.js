@@ -1,6 +1,6 @@
 import React from "react"
 
-const ActionButton = ({ onClick, type, className, buttonText }) => {
+const ActionButton = ({ type, className, buttonText, ...rest }) => {
   return (
     <button
       style={{
@@ -10,10 +10,11 @@ const ActionButton = ({ onClick, type, className, buttonText }) => {
         color: "white",
         height: 36,
         border: "none",
+        fontWeight: 400,
       }}
       className={className}
       type={type}
-      onClick={onClick}
+      {...rest}
     >
       {buttonText}
     </button>

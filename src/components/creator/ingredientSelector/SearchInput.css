@@ -1,0 +1,24 @@
+.searchinput-container {
+  position: relative;
+  width: 100%;
+  border: 1px solid var(--green);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+}
+
+.searchinput-container input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  position: relative;
+  width: 100%;
+  min-width: 100%;
+}
+
+.searchinput-container input:focus {
+  border: none;
+  outline: none;
+}

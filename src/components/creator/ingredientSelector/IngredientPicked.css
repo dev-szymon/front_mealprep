@@ -1,0 +1,10 @@
+.ingredient-picked {
+  height: 3rem;
+  border-radius: 0.5rem;
+  background-color: var(--green);
+  width: 100%;
+  margin-bottom: 0.25rem;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
